@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Console -->
+	<appender name="console" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<!-- <param name="ConversionPattern" value="%d %-5p [%t] %C{2} (%F:%L) - %m%n"/> -->
+			<param name="ConversionPattern" value="%-5p [%t] %C{2} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- Logging levels (package or class level) -->
+	<!-- Levels are debug, info, warn, error, and fatal -->
+
+	<!-- Main Tree -->
+	<!-- example of package level -->
+
+	<category name="org.springframework">
+		<priority value="error" />
+	</category>
+
+	<category name="org.springframework.test">
+		<priority value="error" />
+	</category>
+
+	<category name="org.aspectj">
+		<priority value="error" />
+	</category>
+	
+	<category name="org.apache">
+		<priority value="error" />
+	</category>
+
+	<category name="org.dozer">
+		<priority value="error" />
+	</category>
+
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="console" />
+	</root>
+</log4j:configuration>
