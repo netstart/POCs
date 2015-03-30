@@ -4,9 +4,9 @@ Incluir novo arquivo
 	git push origin master
 
 Incluir todos os arquivos (varios arquivos)
-	git add -A .
 	git commit -m "Seu comentário"
-	git push origin master
+	git add -A .
+	git push orign master
 	
 Salvar alteração
 	git commit -a -m "Seu comentário"

@@ -1,0 +1,1 @@
+Integration with Spring, DBUnit, Liquid, Hibernate and H2 to demonstrate an architecture testable
