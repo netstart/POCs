@@ -1,0 +1,90 @@
+Exemplo de profile pra rodar o sonnar
+
+
+	<!-- mvn sonar:sonar -PsonarGVT -->
+	<!-- (Para especificar as regras a serem utilizadas na análise) -->
+	<!-- mvn sonar:sonar -PsonarGVT -Dsonar.profile="Sonar way with Findbugs" -->
+
+	<!-- pode ser executado assim: mvn sonar:sonar -Dsonar.jdbc.driver=oracle.jdbc.OracleDriver -Dsonar.jdbc.usarname=sonar_owner -Dsonar.jdbc.password=gvt1304 -Dsonar.jdbc.url=jdbc:oracle:thin:@svuxddb12:1521:dev1 
+		-Dsonar.host.url=http://svuxdsoa48:9000 -PsonarGVT -Dsonar.profile="Sonar way with Findbugs" -->
+	<profiles>
+		<profile>
+			<id>sonarGVT</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.sonar</groupId>
+						<artifactId>sonar-maven3-plugin</artifactId>
+						<version>3.5.1</version>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sonar.host.url>http://svuxdsoa48:9000</sonar.host.url>
+				<sonar.jdbc.url>jdbc:oracle:thin:@svuxddb12:1521:dev1</sonar.jdbc.url>
+				<sonar.jdbc.driverClassName>oracle.jdbc.OracleDriver</sonar.jdbc.driverClassName>
+				<sonar.jdbc.username>sonar_owner</sonar.jdbc.username>
+				<sonar.jdbc.password>gvt1304</sonar.jdbc.password>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>sonar-remote</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<!-- pode ser executado assim: mvn sonar:sonar -Dsonar.jdbc.driver=oracle.jdbc.OracleDriver -Dsonar.jdbc.usarname=sonar_owner -Dsonar.jdbc.password=gvt1304 
+							-Dsonar.jdbc. url=jdbc:oracle:thin:@svuxddb12:1521:dev1 -Dsonar.host.url=http://svuxdsoa48:9000 -->
+						<groupId>org.codehaus.sonar</groupId>
+						<artifactId>sonar-maven3-plugin</artifactId>
+						<version>3.1</version>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sonar.host.url>http://svuxdsoa48:9000</sonar.host.url>
+				<sonar.jdbc.url>jdbc:oracle:thin:@svuxddb12:1521:dev1</sonar.jdbc.url>
+				<sonar.jdbc.driverClassName>oracle.jdbc.OracleDriver</sonar.jdbc.driverClassName>
+				<sonar.jdbc.username>sonar_owner</sonar.jdbc.username>
+				<sonar.jdbc.password>gvt1304</sonar.jdbc.password>
+				<sonar.profile>Sonar way with Findbugs</sonar.profile>
+			</properties>
+		</profile>
+
+		<!-- mvn sonar:sonar -PsonarLocalHost -->
+		<profile>
+			<id>sonarLocalHost</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.sonar</groupId>
+						<artifactId>sonar-maven3-plugin</artifactId>
+						<version>3.5.1</version>
+					</plugin>
+				</plugins>
+			</build>
+			<properties>
+				<sonar.host.url>http://localhost:9000</sonar.host.url>
+				<sonar.jdbc.url>jdbc:h2:tcp://localhost:9092/sonar</sonar.jdbc.url>
+				<sonar.jdbc.driverClassName>org.h2.Driver</sonar.jdbc.driverClassName>
+				<sonar.jdbc.username>sonar</sonar.jdbc.username>
+				<sonar.jdbc.password>sonar</sonar.jdbc.password>
+
+				<!-- http://docs.codehaus.org/display/SONAR/Analysis+Parameters#AnalysisParameters-ProjectConfiguration <sonar.languagem></sonar.languagem> -->
+
+			</properties>
+
+		</profile>
+	</profiles>

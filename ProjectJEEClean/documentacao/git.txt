@@ -1,0 +1,56 @@
+Incluir novo arquivo
+	git add nomeDoArquivo.extensao
+	git commit -m "Seu comentário"	
+	git push origin master
+
+Incluir todos os arquivos (varios arquivos)
+	git commit -m "Seu comentário"
+	git add -A .
+	git push orign master
+	
+Salvar alteração
+	git commit -a -m "Seu comentário"
+	git push origin master
+
+Salvar arquivos deletados
+	git commit -a -m "Seu comentário"
+	git push origin master
+	
+Atualizar repositório atual
+	git pull
+
+Verificar o status dos arquivos
+	git status
+
+Fazer merge do repositório local, com o openshift  
+	https://www.openshift.com/forums/openshift/countinuous-delivery-private-github-inhouse-jenkins-openshift)
+	http://stackoverflow.com/questions/12657168/can-i-use-my-existing-git-repo-with-openshift
+
+	From your app folder (your computer clone of your private GitHub repo)
+
+		git remote add openshift ssh://53698bb65004466d9b000058@review380-ck.rhcloud.com/~/git/review380.git
+		
+		git pull openshift > para baixar os arquivos do openshift, difícilmente é necessário
+		
+		git merge openshift/master
+	Resolve conflicts if any?
+
+		git commit -am "add openshift files"
+
+	Try to deploy from your computer :
+
+		git push openshift master
+	If everything goes well, add your ssh public key (from your jenkins user) to your openshift account.
+
+	Add your post build script in Jenkins :
+
+		git push -f openshift master
+	Strange but I had to do a force...Any thoughts on this? (working fine on my computer, but I need to force it on Jenkins)
+
+	PS : to have the automatic start of Jenkins after a GitHub push, you need to add the GitHub plugin to Jenkins and configure the service hooks in GitHub.
+
+
+Apagou um arquivo? Precisa restaurar?
+	git status (para mostrar os arquivos excluidos)
+	git checkout caminho/completo/do/arquivo/a/ser/restaurado.txt
+
