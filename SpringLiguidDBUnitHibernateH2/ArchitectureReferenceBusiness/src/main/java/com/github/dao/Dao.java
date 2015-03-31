@@ -1,13 +1,16 @@
-package br.com.elotech.daoLayer;
+package com.github.dao;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.jdbc.Work;
+import org.hibernate.metadata.ClassMetadata;
 
-public interface Dao<T extends EntityDef, PK> {
+public interface Dao<T, PK> extends Serializable {
 
 	public void remove(T instance);
 
@@ -22,7 +25,7 @@ public interface Dao<T extends EntityDef, PK> {
 	public List<T> findByHql(String query);
 
 	public List<T> findAll(Integer limit, Integer offset);
-	
+
 	public List<T> findAllUnlimited();
 
 	public T findUniqueByHql(String query, Object[] params);
@@ -34,8 +37,8 @@ public interface Dao<T extends EntityDef, PK> {
 	@SuppressWarnings("rawtypes")
 	List findByCriteria(final DetachedCriteria detachedCriteria);
 
-	List<T> findByCriteria(final DetachedCriteria criteria, final int firstResult,
-			final int maxResults);
+	List<T> findByCriteria(final DetachedCriteria criteria,
+			final int firstResult, final int maxResults);
 
 	void flush();
 
@@ -60,8 +63,39 @@ public interface Dao<T extends EntityDef, PK> {
 	void disableFetchProfile(String profile);
 
 	void initializeProxy(Object obj);
-	
+
 	SQLQuery createSQLQuery(Class<T> clazz, String queryString);
 
 	SQLQuery createSQLQuery(String queryString);
+
+	T refresh(T instance);
+
+	T findFirst();
+
+	T merge(T instance);
+
+	void persist(Object instance);
+
+	Query getNamedQuery(String namedQuery);
+
+	List findAnyByHqlOpenSession(String query, Object[] params);
+
+	void evict(Object instance);
+
+	List<T> find(String query);
+
+	List<T> find(String query, Object[] params);
+
+	List<T> listByHql(String queryString);
+
+	Map<String, ClassMetadata> getAllClassMetadata();
+
+	boolean isOpen();
+
+	void clear();
+
+	T load(Class<T> clazz, Serializable key);
+
+	List<T> findByCriteriaAny(DetachedCriteria criteria, int firstResult,
+			int maxResults);
 }
