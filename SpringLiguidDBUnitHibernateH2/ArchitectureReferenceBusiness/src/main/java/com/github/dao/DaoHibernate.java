@@ -19,12 +19,11 @@ import org.hibernate.metadata.ClassMetadata;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.orm.hibernate3.SessionFactoryUtils;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.entity.EloLogger;
+import com.github.entity.ALogger;
 
-public class DaoHibernate<T, PK> extends EloLogger implements Dao<T, PK> {
+public class DaoHibernate<T, PK> extends ALogger implements Dao<T, PK> {
 
 	private static final long serialVersionUID = -795755904290863602L;
 	private static final int MAXRESULTS = 50;
@@ -49,25 +48,19 @@ public class DaoHibernate<T, PK> extends EloLogger implements Dao<T, PK> {
 	}
 
 	public T saveOrUpdate(T instance) {
-
-		logger.debug("saving " + instance.getClass().getName() + " instance");
+		LOG.debug("saving " + instance.getClass().getName() + " instance");
 		try {
-
 			instance = merge(instance);
-			logger.debug("save successful");
+			LOG.debug("save successful");
 			return instance;
 		} catch (RuntimeException re) {
-			logger.error("save failed", re);
-
+			LOG.error("save failed", re);
 			throw catchException(re);
-
 		}
-
 	}
 
 	@Transactional
 	public List<T> findAll() {
-
 		return findAll(MAXRESULTS, 0);
 	}
 
@@ -80,29 +73,29 @@ public class DaoHibernate<T, PK> extends EloLogger implements Dao<T, PK> {
 	}
 
 	public void remove(T instance) {
-		logger.debug("deleting " + instance.getClass().getName() + " instance");
+		LOG.debug("deleting " + instance.getClass().getName() + " instance");
 		try {
 			sessionFactory.getCurrentSession().delete(instance);
-			logger.debug("delete successful");
+			LOG.debug("delete successful");
 		} catch (RuntimeException re) {
-			logger.error("delete failed", re);
+			LOG.error("delete failed", re);
 			throw catchException(re);
 		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public T load(PK primaryKey) {
-		logger.debug("Load instance");
+		LOG.debug("Load instance");
 		try {
 			return (T) load(typeClass, (Serializable) primaryKey);
 		} catch (RuntimeException re) {
-			logger.error("load failed", re);
+			LOG.error("load failed", re);
 			throw catchException(re);
 		}
 	}
 
 	public List<T> findByHql(String query, Object[] params) {
-		logger.debug("Find By Hsql " + query);
+		LOG.debug("Find By Hsql " + query);
 		try {
 
 			if (params != null && params.length > 0) {
@@ -111,7 +104,7 @@ public class DaoHibernate<T, PK> extends EloLogger implements Dao<T, PK> {
 				return find(query);
 			}
 		} catch (RuntimeException re) {
-			logger.error("load failed", re);
+			LOG.error("load failed", re);
 			throw catchException(re);
 		}
 	}
@@ -121,28 +114,28 @@ public class DaoHibernate<T, PK> extends EloLogger implements Dao<T, PK> {
 	}
 
 	public List<T> findAll(Integer limit, Integer offset) {
-		logger.debug("finding all " + typeClass.getName() + " instances from: "
+		LOG.debug("finding all " + typeClass.getName() + " instances from: "
 				+ offset + " to: " + limit);
 		try {
 			List<T> result = findByCriteria(createCriteria(), offset, limit);
 
-			logger.debug("findAll successful, result size: " + result.size());
+			LOG.debug("findAll successful, result size: " + result.size());
 			return result;
 		} catch (RuntimeException re) {
-			logger.error("findAll failed", re);
+			LOG.error("findAll failed", re);
 			throw catchException(re);
 		}
 	}
 
 	public List<T> findAllUnlimited() {
-		logger.debug("finding all " + typeClass.getName() + " instances");
+		LOG.debug("finding all " + typeClass.getName() + " instances");
 		try {
 			List<T> result = findByCriteria(createCriteria());
 
-			logger.debug("findAll successful, result size: " + result.size());
+			LOG.debug("findAll successful, result size: " + result.size());
 			return result;
 		} catch (RuntimeException re) {
-			logger.error("findAll failed", re);
+			LOG.error("findAll failed", re);
 			throw catchException(re);
 		}
 	}
@@ -164,11 +157,8 @@ public class DaoHibernate<T, PK> extends EloLogger implements Dao<T, PK> {
 	}
 
 	public T findUniqueByHql(String query, Object[] params) {
-
 		List<T> result = findByHql(query, params);
-
 		return DataAccessUtils.uniqueResult(result);
-
 	}
 
 	public T refresh(T instance) {
