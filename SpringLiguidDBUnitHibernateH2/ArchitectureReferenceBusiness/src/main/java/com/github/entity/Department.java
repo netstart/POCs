@@ -13,43 +13,54 @@ import javax.persistence.Table;
 @Cacheable(true)
 public class Department implements Serializable, Comparable<Department> {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@Column
-	private Long id;
+    @Id
+    @Column
+    private Long id;
 
-	private String name;
+    private String name;
 
-	private Boolean active;
+    private Boolean active;
 
-	public Long getId() {
-		return id;
-	}
+    public Department() {
+        super();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Department(Long id, String name, Boolean active) {
+        super();
+        this.id = id;
+        this.name = name;
+        this.active = active;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Boolean getActive() {
-		return active;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public int compareTo(Department o) {
-		return id.compareTo(o.id);
-	}
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
+    }
+
+    @Override
+    public int compareTo(Department o) {
+        return id.compareTo(o.id);
+    }
 
 }
