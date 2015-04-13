@@ -33,7 +33,7 @@ import com.github.springtestdbunit.annotation.DatabaseTearDown;
  * @author claytonpassos
  *
  *         This example, demonstrate how do you integrate Spring test, DBUnit,
- *         H2 data base, powermock and mockito to test
+ *         H2 data base, powermock and mockito to test your application
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:/testCtxInitial.xml"})
