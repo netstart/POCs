@@ -29,7 +29,7 @@ import com.github.springtestdbunit.annotation.DatabaseTearDown;
 //
 @DatabaseSetup(value = { "/dbunit/department.dbunit.xml" })
 @DatabaseTearDown(value = { "/dbunit/department.dbunit.xml" }, type = DatabaseOperation.DELETE_ALL)
-public class TestDepartment {
+public class DepartmentTest {
 
 	@Autowired
 	private DaoDepartment daoDepartment;
