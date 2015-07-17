@@ -17,6 +17,64 @@ No Sublime, pressione CTRL + SHIFT + P
 	HtmlBeautify
 	JavaScriptBeautify
 	JavaScriptCompletion
+	JsFormat
+	JSHint
+	JavaScriptNext
+	SublimeOnSaveBuild
 	
 	
 Download bootstrap: http://globocom.github.io/bootstrap/
+
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+JsFormat
+
+https://github.com/jdc0589/JsFormat
+
+JsFormat is a JavaScript formatting plugin. Behind the scenes, it uses the command line formatter from jsbeautifier.org to format full or portions of JavaScript and JSON files.
+
+Features
+
+    JavaScript formatting
+    JSON formatting
+    Full file formatting
+    Selected text formatting
+    Customizable settings for formatting options
+    Customize per project with .jsbeautifyrc settings file
+
+Usage
+
+Either cmd+alt+f on OS X or ctrl+alt+f on Linux/Windows
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+JSHint
+
+https://github.com/uipoet/sublime-jshint
+
+“JSHint is a community-driven tool to detect errors and potential problems in JavaScript code and to enforce your team’s coding conventions. It is very flexible so you can easily adjust it to your particular coding guidelines and the environment you expect your code to execute in. JSHint is open source and will always stay this way.” - JSHint
+
+Usage
+
+ctrl+j on OS X or alt+j on Linux/Windows
+
+If you would like to have JSHint run anytime you save a JavaScript file (highly suggest this), you will need to install the SublimeOnSaveBuild package.
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+JavaScriptNext
+
+https://github.com/Benvie/JavaScriptNext.tmLanguage
+
+This plugin is a better syntax highlighter for JavaScript. Not only does it improve syntax highlighting for current ES5, it also adds syntax highlighting for new ES6 syntax such as modules, succinct methods, arrow functions, classes, and generators.
+
+Here is the original JavaScript syntax highlighter:
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+http://scottksmith.com/blog/2014/09/29/3-essential-sublime-text-plugins-for-node-and-javascript-developers/
+https://github.com/alexnj/SublimeOnSaveBuild
