@@ -11,6 +11,10 @@
 	<artifactId>ArchitectureReferenceBusiness</artifactId>
 	<packaging>ejb</packaging>
 
+	<properties>
+		<powermock.version>1.6.2</powermock.version>
+	</properties>
+
 
 	<build>
 		<plugins>
@@ -116,14 +120,6 @@
 
 
 		<dependency>
-			<groupId>org.dbunit</groupId>
-			<artifactId>dbunit</artifactId>
-			<version>2.5.0</version>
-			<type>jar</type>
-			<scope>test</scope>
-		</dependency>
-		
-		<dependency>
 			<groupId>com.github.springtestdbunit</groupId>
 			<artifactId>spring-test-dbunit</artifactId>
 			<version>1.2.1</version>
@@ -167,11 +163,48 @@
 		</dependency>
 
 		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<version>1.4.186</version>
 			<scope>test</scope>
 		</dependency>
+
+
+		<dependency>
+			<groupId>org.dbunit</groupId>
+			<artifactId>dbunit</artifactId>
+			<version>2.5.0</version>
+			<type>jar</type>
+			<scope>test</scope>
+		</dependency>
+
+		<!--INICIO: Dependencias para teste com powermock -->
+
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<scope>test</scope>
+			<version>${powermock.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4-rule</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-classloading-xstream</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<!--FIM: Dependencias para teste com powermock -->
 
 	</dependencies>
 
