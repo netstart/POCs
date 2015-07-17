@@ -7,6 +7,10 @@ codeAmApp.controller("JoaoCtrl", ['$scope', function($scope){
 		$scope.name = "Clayton K. N. Passos"
 	}
 
+	$scope.digiteNome = function(novoNome){
+		$scope.name = novoNome;
+	}
+
 
 }]);
 
