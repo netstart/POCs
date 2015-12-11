@@ -1,0 +1,26 @@
+#Windows> mongod
+#Linux>sudo service mongod start
+
+
+Para iniciar o console
+#Windows> mongo
+#Linux> mongo start
+
+
+use <database>
+use mean
+db.createCollection('posts', {autoIndexID: true});
+
+show collections
+
+db.posts.insert({title: 'Post 1', content: 'Lorem ipsum1', tags: []});
+db.posts.insert({title: 'Post 2', content: 'Lorem ipsum2', tags: []});
+db.posts.insert({title: 'Post 3', content: 'Lorem ipsum3', tags: ['sexo', 'redtube', 'porntube']});
+
+db.posts.find();
+db.posts.find().pretty();
+
+db.posts.findOne({title: 'Post 1'});
+
+db.createCollection('users', {autoIndexID: true});
+db.createCollection('posts', {name: 'Diego', user: 'dzn'});
