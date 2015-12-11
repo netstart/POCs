@@ -3,12 +3,12 @@
 
 
 Para iniciar o console
-#Windows> mongo
+#Windows> mongo mean
 #Linux> mongo start
 
 
 use <database>
-use mean
+use mean;
 db.createCollection('posts', {autoIndexID: true});
 
 show collections
@@ -22,5 +22,6 @@ db.posts.find().pretty();
 
 db.posts.findOne({title: 'Post 1'});
 
+use mean;
 db.createCollection('users', {autoIndexID: true});
-db.createCollection('posts', {name: 'Diego', user: 'dzn'});
+db.users.insert({name: 'Diego', user: 'dzn'});
