@@ -1,0 +1,20 @@
+{
+  "name": "Clayton Passos",
+  "description": "Criando uma aplicação usando MEAN Stack",
+  "main": "",
+  "authors": [
+    "netstart <netstart@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/netstart/POCs",
+  "moduleType": [
+    "node"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
