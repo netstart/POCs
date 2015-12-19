@@ -1,0 +1,3 @@
+# a opção --save adiciona a dependência no bower.json
+bower install jquery --save
+bower install angularjs --save
