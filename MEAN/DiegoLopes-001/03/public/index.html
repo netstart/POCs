@@ -1,23 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="superhero">
 	<head>
 		<meta charset="UTF-8">
 		<title>Document</title>
-		<link rel="stylesheet" type="text/css" href="components/bootstrap/bootstrap.cs">
-		<link rel="stylesheet" type="text/css" href="components/font-awesome/css/font-awesome.css">
+		
+		<link rel="stylesheet"  href="components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet"  href="components/font-awesome/css/font-awesome.css">
+		
 	</head>
-	<script src="components/angularjs/angular.js"></script>
-	<script src="components/jquery/dist/jquery.js"></script>
-	<script src="components/dist/js/bootstap.js"></script>
+	
 	<body>
 		
-		Any think here
-		<section id="posts">
+		<script src="components/angular/angular.js"></script>
+		<script src="components/jquery/dist/jquery.js"></script>
+		<script src="components/bootstrap/dist/js/bootstrap.js"></script>
+		<script src="javascript/controllers/posts.js"></script>
+		
+		<section id="posts" ng-controller="PostCtrl">
 			<div class="container">
 				<div class="row">
 					<h1>Posts</h1>
-					<table>
-						<caption>table title and/or explanatory text</caption>
+					
+
+					<form action="" class="form-inline">
+						<input type="text" class="form-control" ng-model="search">
+					</form>
+
+
+					<table class="table">
+						<caption>Posts</caption>
 						<thead>
 							<tr>
 								<th>Título</th>
@@ -28,18 +39,26 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<tr ng-repeat="post in posts |filter: search| orderBy: '-likes'">
+								<td>{{post.title}}</td>
+								<td>{{post.content}}</td>
+								<td>{{post.tags}}</td>
+								<td>
+									<span>{{post.likes}}
+									</span>
+									
+									<button class="btn btn-primary btn-sm" ng-click="addLike(post)">
+										<i class="fa fa-thumbs-up">
+											
+										</i>
+									</button>
+
+									<button class="btn btn-primary btn-sm" ng-click="removeLike(post)">
+										<i class="fa fa-thumbs-down">
+											
+										</i>
+									</button>
+								</td>
 								<td></td>
 							</tr>
 						</tbody>
