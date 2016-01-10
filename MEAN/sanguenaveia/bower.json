@@ -27,6 +27,12 @@
     "livereload-js": "livereload#~2.2.1",
     "lodash": "~3.10.1",
     "angular-resource": "~1.4.8",
-    "angular-mocks": "~1.4.8"
+    "angular-mocks": "~1.4.8",
+    "angular-cookies": "~1.4.8",
+    "angular-ui-sortable": "~0.13.4",
+    "angular-touch": "~1.4.8",
+    "angular-sanitize": "~1.4.8",
+    "angular-animate": "~1.4.8",
+    "jquery-ui": "~1.11.4"
   }
 }
