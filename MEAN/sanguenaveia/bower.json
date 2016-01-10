@@ -25,6 +25,8 @@
     "angular-route": "~1.4.8",
     "restangular": "~1.5.1",
     "livereload-js": "livereload#~2.2.1",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "angular-resource": "~1.4.8",
+    "angular-mocks": "~1.4.8"
   }
 }
