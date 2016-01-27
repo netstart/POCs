@@ -1,0 +1,8 @@
+﻿# a opção --save adiciona a dependência no bower.json
+bower install jquery --save
+bower install angularjs --save
+
+
+#O Bower vai tentar usar as urls originais, que podem usar o protocolo "git://". Se você tem um maldito firewall, então não vai conseguir... A solução é configurar o git para usar "https://:
+
+$> git config --global url."https://".insteadOf git://

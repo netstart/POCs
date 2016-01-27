@@ -1,0 +1,6 @@
+Glyphicons: http://getbootstrap.com/components/
+
+
+Checkbox:
+http://bootsnipp.com/snippets/mpNjR
+http://bootsnipp.com/snippets/j2KKb
