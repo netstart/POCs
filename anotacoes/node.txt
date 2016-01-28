@@ -1,0 +1,3 @@
+To Debug - http://stackoverflow.com/questions/1911015/how-do-i-debug-node-js-applications
+> npm install -g node-inspector
+> node-debug app.js
