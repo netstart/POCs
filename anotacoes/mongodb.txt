@@ -1,0 +1,10 @@
+When no collection argument is passed, Mongoose produces a collection name by passing the model name to the utils.toCollectionName method. This method pluralizes the name. If you don't like this behavior, either pass a collection name or set your schemas collection name option.
+
+http://stackoverflow.com/questions/10547118/why-does-mongoose-always-add-an-s-to-the-end-of-my-collection-name
+http://mongoosejs.com/docs/api.html#index_Mongoose-model
+
+-----------
+
+
+
+
