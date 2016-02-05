@@ -1,0 +1,76 @@
+Lecture 1:mongodbCLI  -
+
+Install
+Cd /program_file/mongodb.26./bin
+Mkdir  \data\db
+mongod
+
+
+
+Code
+Cd /program_file/mongodb.26./bin
+Mongo
+
+//show all databases
+show databases
+//create a new db and then a collection
+use testdb
+db.createCollection(“users”)
+//now use this db and pick the collection and lets create users
+db.users.insert({name:"jason",age:32,tite:"web developer"})
+
+db.users.insert({name:"tyler",age:32,tite:"lead developer"})
+db.users.insert({name:"sam",age:30,tite:"web developer"})
+db.users.insert({name:"tab",age:31,tite:"tech support"})
+db.users.insert({name:"brad",age:37,tite:"dba"})
+
+//now that it is inserted  lets look at it
+db.users.find()
+//to view it better put pretty() on the end
+db.users.find().pretty()
+
+//now lets talk about updating
+// db.users.insert({name:”Jason”, age:32,  title:”web developer”)
+//$inc:{age:32}  increment age in 32, the result is 64
+
+db.users.update({name:"jason"},{$set:{title:"vp of operations"},$inc:{age:32}});
+
+//this command not update, because name:"Jason" not exist
+db.users.update({name:"Jason"},{$set:{title:"dba"} ,$inc:{age:1} });
+
+//See, execute this
+db.users.find({name: "jason"});
+db.users.find({name: "Jason"});
+
+//If you execute another command to insert {name: "jason"} again, this information will be duplicated
+// and if you execute update, the first result will be update, the second not
+
+//lets talk about another way to update
+db.users.save({_id:objected(“place id”),name:”Jason”, age:32,  title:” web developer”)
+
+
+
+put more update things in 
+
+
+//now lets remove one
+db.users.remove({name:”jason”})
+
+//Lets index the database 
+db.users.ensureIndex({“age”:1})
+
+//now lets check and see how it searchs]
+db.users.find().pretty()
+db.users.find({“age”:31})
+db.users.find({“age”:31}).explain()
+//then try this
+db.users.find({name:””}).explain()
+
+
+
+
+//lets aggregate some data
+//create a counter, the sames tite going to sum
+db.users.aggregate([{$group:{_id:"$tite","count":{$sum:1} }  }])
+db.users.aggregate([{$group:{_id:1,"tites":{$addToSet:"$tite" } }  }])
+db.users.aggregate([{$group:{_id:"$tite","count":{$sum:1} }  }])

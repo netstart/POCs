@@ -1,5 +1,0 @@
-Incluir/definir a senha do administrador
-	http://stackoverflow.com/questions/20041216/wildfly-change-management-realms-password
-	execute add-user
-
-

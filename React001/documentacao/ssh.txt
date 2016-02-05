@@ -1,4 +1,0 @@
-Criar chave
-	ssh-keygen -t rsa
-		Isto irá criar uma dois arquivos, por padrão este arquivo deve ficar na dentro da pasta/diretório do usuário, dentro de .ssh e sob o nome id_rsa e id_rsa.pub
-
