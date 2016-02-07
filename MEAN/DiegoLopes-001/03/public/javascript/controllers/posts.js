@@ -24,7 +24,6 @@ superhero.controller("PostCtrl", ['$scope', function($scope){
 
 	$scope.posts = posts;
 
-
 	//Funções
 
 	$scope.addLike = function(post){

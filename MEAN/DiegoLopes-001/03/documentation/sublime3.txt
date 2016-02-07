@@ -1,0 +1,21 @@
+Install plugins on sublime 3
+-----------------------------------------------------------------------
+
+BracketHighlighter - Show brackts on number line
+
+SidebarEnhancements - add mor options on Left (folders)
+
+SublimeCodeIntel - add auto complete to many languages
+
+
+SublimeLinter with JSHint and CSSLint - show erros in css and javascript
+	SublimeLinter-csslint and SublimeLinter-jscs
+
+	$> npm install -g jshint
+	$> npm install -g csslint
+
+	Reset sublime
+
+
+
+https://github.com/angular-ui/AngularJS-sublime-package
