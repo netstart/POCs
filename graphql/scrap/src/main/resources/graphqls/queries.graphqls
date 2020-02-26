@@ -1,0 +1,3 @@
+type Query {
+    findChangePlan(site: String): ChangePlan
+}

@@ -1,0 +1,7 @@
+type ChangePlan {
+    now: String
+    description: String
+    brl: BigDecimal
+    usd: BigDecimal
+    eur: BigDecimal
+}
