@@ -61,8 +61,6 @@
 
 	<dependencyManagement>
 		<dependencies>
-
-
 			<dependency>
 				<groupId>org.keycloak.bom</groupId>
 				<artifactId>keycloak-adapter-bom</artifactId>
