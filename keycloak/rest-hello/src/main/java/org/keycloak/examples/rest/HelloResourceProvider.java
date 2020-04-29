@@ -55,9 +55,18 @@ public class HelloResourceProvider implements RealmResourceProvider {
 		System.out.println("=== exampleRequest01 " + exampleRequest01);
 		response.close();
 
-		ServicesInterface proxy = (ServicesInterface) target.proxy(ServicesInterface.class);
+		ServicesInterface proxy = (ServicesInterface)target.proxy(ServicesInterface.class);
 		System.out.println("=== exampleRequest02" + proxy.get());
 
+
+		path = "http://www.mocky.io/"; // https://www.mocky.io/v2/5185415ba171ea3a00704eed
+		client = new ResteasyClientBuilder().build();
+		target = client.target(path);
+		response = target.request().get();
+		proxy = (ServicesInterface)target.proxy(ServicesInterface.class);
+		System.out.println("=== getById" + proxy.getById("5185415ba171ea3a00704eed"));
+
+		
 		String name = session.getContext().getRealm().getDisplayName();
 		if (name == null) {
 			name = session.getContext().getRealm().getName();

@@ -1,18 +1,21 @@
 package org.keycloak.examples.rest.movie;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
 
+@Path("/")
+@Consumes({"application/xml", "application/json"})
+@Produces({"application/xml", "application/json"})
 public interface ServicesInterface {
-	
+
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON })
 	String get();
-	
+
 	@GET
-	@Produces({ MediaType.APPLICATION_JSON })
+	@Path("/v2/{id}")
 	String getById(@PathParam("id") String id);
 
 }
