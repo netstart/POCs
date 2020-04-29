@@ -19,7 +19,12 @@ package org.keycloak.examples.rest;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Response;
 
+import org.jboss.resteasy.client.jaxrs.ResteasyClient;
+import org.jboss.resteasy.client.jaxrs.ResteasyClientBuilder;
+import org.jboss.resteasy.client.jaxrs.ResteasyWebTarget;
+import org.keycloak.examples.rest.movie.ServicesInterface;
 import org.keycloak.models.KeycloakSession;
 import org.keycloak.services.resource.RealmResourceProvider;
 
@@ -28,29 +33,40 @@ import org.keycloak.services.resource.RealmResourceProvider;
  */
 public class HelloResourceProvider implements RealmResourceProvider {
 
-    private KeycloakSession session;
+	private KeycloakSession session;
 
-    public HelloResourceProvider(KeycloakSession session) {
-        this.session = session;
-    }
+	public HelloResourceProvider(KeycloakSession session) {
+		this.session = session;
+	}
 
-    @Override
-    public Object getResource() {
-        return this;
-    }
+	@Override
+	public Object getResource() {
+		return this;
+	}
 
-    @GET
-    @Produces("text/plain; charset=utf-8")
-    public String get() {
-        String name = session.getContext().getRealm().getDisplayName();
-        if (name == null) {
-            name = session.getContext().getRealm().getName();
-        }
-        return "Hello " + name;
-    }
+	@GET
+	@Produces("text/plain; charset=utf-8")
+	public String get() {
+		String path = "http://www.mocky.io/v2/5185415ba171ea3a00704eed"; // https://www.mocky.io/v2/5185415ba171ea3a00704eed
+		ResteasyClient client = new ResteasyClientBuilder().build();
+		ResteasyWebTarget target = client.target(path);
+		Response response = target.request().get();
+		String exampleRequest01 = response.readEntity(String.class);
+		System.out.println("=== exampleRequest01 " + exampleRequest01);
+		response.close();
 
-    @Override
-    public void close() {
-    }
+		ServicesInterface proxy = (ServicesInterface) target.proxy(ServicesInterface.class);
+		System.out.println("=== exampleRequest02" + proxy.get());
+
+		String name = session.getContext().getRealm().getDisplayName();
+		if (name == null) {
+			name = session.getContext().getRealm().getName();
+		}
+		return "Hello " + name + " " + exampleRequest01;
+	}
+
+	@Override
+	public void close() {
+	}
 
 }

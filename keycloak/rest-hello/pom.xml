@@ -43,8 +43,8 @@
 		<apache.httpcomponents.version>4.5.4</apache.httpcomponents.version>
 		<resteasy.version>3.9.3.SP1</resteasy.version>
 		<resteasy.undertow.version>${resteasy.version}</resteasy.undertow.version>
-        <commons-lang.version>2.6</commons-lang.version>
-        <commons-lang3.version>3.9</commons-lang3.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<commons-lang3.version>3.9</commons-lang3.version>
 
 	</properties>
 
@@ -108,6 +108,26 @@
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-client</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxrs</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-jaxb-provider</artifactId>
 		</dependency>
 
 	</dependencies>
@@ -272,6 +292,7 @@
 				<artifactId>resteasy-client</artifactId>
 				<version>${resteasy.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.jboss.resteasy</groupId>
 				<artifactId>resteasy-undertow</artifactId>
@@ -288,11 +309,6 @@
 				</exclusions>
 			</dependency>
 
-			<dependency>
-				<groupId>org.jboss.spec.javax.xml.bind</groupId>
-				<artifactId>jboss-jaxb-api_2.3_spec</artifactId>
-				<version>${jboss.spec.javax.xml.bind.jboss-jaxb-api_2.3_spec.version}</version>
-			</dependency>
 			<dependency>
 				<groupId>org.jboss.spec.javax.servlet.jsp</groupId>
 				<artifactId>jboss-jsp-api_2.3_spec</artifactId>
