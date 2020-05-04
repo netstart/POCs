@@ -10,8 +10,12 @@ UserFederation>Add Provider>writable-property-file
 
 Adicionar no menu federation, vai precisar dizer onde está o arquivo .properties, no campo virá preenchido com:
 
-  ${jboss.server.config.dir}/example-users.properties
+${jboss.server.config.dir}/example-users.properties
+ 
 por padrão esse arquivo fica em fica em: keycloackinstalation/standalone/configuration
+
+Pode utilizar o arquivo src/main/resources/example-users.properties de exemplo 
+
   
 ![Add userStorage provider](doc/img/AddUserStorageProvider.png)
 
