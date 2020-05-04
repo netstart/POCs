@@ -52,14 +52,12 @@ public class PropertyFileUserStorageProvider implements
 // Factory exige esta interface
 		UserStorageProvider, 
 
-// Usado para pesquisar usuário na tela
-//		UserLookupProvider,
+// Usado para pesquisar usuário individualmente no console web, também é usado para recupear o token, 
+// principalmente no primeiro login, quando não há cache (getUserByUsername)
+		UserLookupProvider,
 
 // Precisa para pegar o token
 		CredentialInputValidator
-
-// precisa pra pegar o token
-//		UserQueryProvider
 		{
 
 	public static final String UNSET_PASSWORD = "#$!-UNSET-PASSWORD";
@@ -76,212 +74,54 @@ public class PropertyFileUserStorageProvider implements
 		this.model = model;
 		this.properties = properties;
 	}
-
-// UserLookupProvider methods
-
-//	@Override
-//	public UserModel getUserByUsername(String username, RealmModel realm) {
-//		System.out.println("== getUserByUsername(String username, RealmModel realm) ");
-//		UserModel adapter = loadedUsers.get(username);
-//		if (adapter == null) {
-//			String password = properties.getProperty(username);
-//			if (password != null) {
-//				adapter = createAdapter(realm, username);
-//				loadedUsers.put(username, adapter);
-//			}
-//		}
-//		return adapter;
-//	}
-//
-//	private List<UserModel> getAll(RealmModel realm) {
-//		System.out.println("==  getAll(RealmModel realm) ");
-//		List<UserModel> users = new LinkedList<>();
-//
-//		for (Object obj : properties.keySet()) {
-//			String username = (String) obj;
-//			UserModel adapter = createAdapter(realm, username);
-//
-//			users.add(adapter);
-//		}
-//
-//		return users;
-//	}
-//
-//	protected UserModel createAdapter(RealmModel realm, String username) {
-//		System.out.println("== createAdapter(RealmModel realm, String username) ");
-//		return new AbstractUserAdapterFederatedStorage(session, realm, model) {
-//			
-//			
-//			@Override
-//			public String getUsername() {
-//				return username;
-//			}
-//
-//			@Override
-//			public void setUsername(String username) {
-//				String pw = (String) properties.remove(username);
-//				if (pw != null) {
-//					properties.put(username, pw);
-//					save();
-//				}
-//			}
-//		};
-//	}
-//
-//	@Override
-//	public UserModel getUserById(String id, RealmModel realm) {
-//		System.out.println("== getUserById(String id, RealmModel realm) ");
-//		StorageId storageId = new StorageId(id);
-//		String username = storageId.getExternalId();
-//		return getUserByUsername(username, realm);
-//	}
-//
-//	@Override
-//	public UserModel getUserByEmail(String email, RealmModel realm) {
-//		System.out.println("== getUserByEmail(String email, RealmModel realm) ");
-//		return null;
-//	}
-
-// UserQueryProvider methods
-//	@Override
-//	public int getUsersCount(RealmModel realm) {
-//		System.out.println("== getUsersCount(RealmModel realm) ");
-//		return properties.size();
-//	}
-//
-//	@Override
-//	public List<UserModel> getUsers(RealmModel realm) {
-//		System.out.println("== getUsers(RealmModel realm)");
-//		return getUsers(realm, 0, Integer.MAX_VALUE);
-//	}
-//
-//	@Override
-//	public List<UserModel> getUsers(RealmModel realm, int firstResult, int maxResults) {
-//		System.out.println("== getUsers(RealmModel realm, int firstResult, int maxResults) ");
-//		List<UserModel> users = new LinkedList<>();
-//		int i = 0;
-//		for (Object obj : properties.keySet()) {
-//			if (i++ < firstResult)
-//				continue;
-//			String username = (String) obj;
-//			UserModel user = getUserByUsername(username, realm);
-//			users.add(user);
-//			if (users.size() >= maxResults)
-//				break;
-//		}
-//		return users;
-//	}
-
-// UserQueryProvider method implementations
-//	@Override
-//	public List<UserModel> searchForUser(String search, RealmModel realm) {
-//		System.out.println("== searchForUser(String search, RealmModel realm)");
-//		return searchForUser(search, realm, 0, Integer.MAX_VALUE);
-//	}
-//
-//	@Override
-//	public List<UserModel> searchForUser(String search, RealmModel realm, int firstResult, int maxResults) {
-//		System.out.println("== searchForUser(String search, RealmModel realm, int firstResult, int maxResults)");
-//		List<UserModel> users = new LinkedList<>();
-//		int i = 0;
-//		for (Object obj : properties.keySet()) {
-//			String username = (String) obj;
-//			if (!username.contains(search))
-//				continue;
-//			if (i++ < firstResult)
-//				continue;
-//			UserModel user = getUserByUsername(username, realm);
-//			users.add(user);
-//			if (users.size() >= maxResults)
-//				break;
-//		}
-//		return users;
-//	}
-//
-//	@Override
-//	public List<UserModel> searchForUser(Map<String, String> params, RealmModel realm) {
-//		System.out.println("== searchForUser(Map<String, String> params, RealmModel realm)");
-//		return searchForUser(params, realm, 0, Integer.MAX_VALUE);
-//	}
-//
-//	@Override
-//	public List<UserModel> searchForUser(Map<String, String> params, RealmModel realm, int firstResult,
-//			int maxResults) {
-//		System.out.println(
-//				"== searchForUser(Map<String, String> params, RealmModel realm, int firstResult, int maxResults)");
-//// only support searching by username
-//		String usernameSearchString = params.get("username");
-//		System.out.println("== usernameSearchString: " + usernameSearchString);
-//
-//		if (usernameSearchString == null) {
-//			return getAll(realm);
-////	return Collections.EMPTY_LIST;
-//		}
-//		return searchForUser(usernameSearchString, realm, firstResult, maxResults);
-//	}
-//
-//	@Override
-//	public List<UserModel> getGroupMembers(RealmModel realm, GroupModel group, int firstResult, int maxResults) {
-//		System.out.println("== getGroupMembers(RealmModel realm, GroupModel group, int firstResult, int maxResults)");
-//// runtime automatically handles querying UserFederatedStorage
-//		return Collections.EMPTY_LIST;
-//	}
-//
-//	@Override
-//	public List<UserModel> getGroupMembers(RealmModel realm, GroupModel group) {
-//		System.out.println("== getGroupMembers(RealmModel realm, GroupModel group)");
-//// runtime automatically handles querying UserFederatedStorage
-//		return Collections.EMPTY_LIST;
-//	}
-//
-//	@Override
-//	public List<UserModel> searchForUserByUserAttribute(String attrName, String attrValue, RealmModel realm) {
-//		System.out.println("== searchForUserByUserAttribute(String attrName, String attrValue, RealmModel realm)");
-//// runtime automatically handles querying UserFederatedStorage
-//		return Collections.EMPTY_LIST;
-//	}
-
 	
-// UserRegistrationProvider method implementations
-//
-//	public void save() {
-//		System.out.println("== save()");
-//		String path = model.getConfig().getFirst("path");
-//		path = EnvUtil.replace(path);
-//		try {
-//			FileOutputStream fos = new FileOutputStream(path);
-//			properties.store(fos, "");
-//			fos.close();
-//		} catch (IOException e) {
-//			throw new RuntimeException(e);
-//		}
-//	}
-	
+    // UserLookupProvider methods
 
-//	@Override
-//	public UserModel addUser(RealmModel realm, String username) {
-//		System.out.println("== addUser(RealmModel realm, String username)");
-//		synchronized (properties) {
-//			properties.setProperty(username, UNSET_PASSWORD);
-//			save();
-//		}
-//		return createAdapter(realm, username);
-//	}
-//
-//	@Override
-//	public boolean removeUser(RealmModel realm, UserModel user) {
-//		System.out.println("== removeUser(RealmModel realm, UserModel user)");
-//		synchronized (properties) {
-//			if (properties.remove(user.getUsername()) == null)
-//				return false;
-//			save();
-//			return true;
-//		}
-//	}
+    @Override
+    public UserModel getUserByUsername(String username, RealmModel realm) {
+    	System.out.println("== getUserByUsername(String username, RealmModel realm) ");
+        UserModel adapter = loadedUsers.get(username);
+        if (adapter == null) {
+            String password = properties.getProperty(username);
+            if (password != null) {
+                adapter = createAdapter(realm, username);
+                loadedUsers.put(username, adapter);
+            }
+        }
+        return adapter;
+    }
+
+    protected UserModel createAdapter(RealmModel realm, String username) {
+    	System.out.println("== createAdapter(RealmModel realm, String username) ");
+        return new AbstractUserAdapterFederatedStorage(session, realm, model) {
+            @Override
+            public String getUsername() {
+                return username;
+            }
+
+            @Override
+            public void setUsername(String username) {
+
+            }
+        };
+    }
+
+    @Override
+    public UserModel getUserById(String id, RealmModel realm) {
+    	System.out.println("== getUserById(String id, RealmModel realm) ");
+        StorageId storageId = new StorageId(id);
+        String username = storageId.getExternalId();
+        return getUserByUsername(username, realm);
+    }
+
+    @Override
+    public UserModel getUserByEmail(String email, RealmModel realm) {
+    	System.out.println("== getUserByEmail(String email, RealmModel realm) ");
+        return null;
+    }
 
 // CredentialInputValidator methods
 
-	@Override
 	public boolean isConfiguredFor(RealmModel realm, UserModel user, String credentialType) {
 		System.out.println("== isConfiguredFor(RealmModel realm, UserModel user, String credentialType)");
 		String password = properties.getProperty(user.getUsername());
@@ -290,63 +130,47 @@ public class PropertyFileUserStorageProvider implements
 
 	@Override
 	public boolean supportsCredentialType(String credentialType) {
-		System.out.println("== supportsCredentialType(String credentialType)");
+		System.out.println("== supportsCredentialType(String credentialType) + credentialType: " + credentialType);
 		return credentialType.equals(CredentialModel.PASSWORD);
 	}
 
 	@Override
 	public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {
-		System.out.println("== isValid(RealmModel realm, UserModel user, CredentialInput input)");
+		System.out.println("== isValid(RealmModel realm, UserModel user, CredentialInput input) realm:" + realm + "input: " + input);
+		System.out.println("isValid -> UserModel:" + toPrintUserModel(user));
 		if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel))
 			return false;
-
+		
 		UserCredentialModel cred = (UserCredentialModel) input;
 		String password = properties.getProperty(user.getUsername());
 		if (password == null || UNSET_PASSWORD.equals(password))
 			return false;
 		return password.equals(cred.getValue());
 	}
+	
+	private String toPrintUserModel(UserModel user) {
+		StringBuilder sb = new StringBuilder();
+		sb.append("email:");
+		sb.append(user.getEmail());
+		
+		sb.append("userName:");
+		sb.append(user.getUsername());
 
-// CredentialInputUpdater methods
-//	@Override
-//	public boolean updateCredential(RealmModel realm, UserModel user, CredentialInput input) {
-//		System.out.println("== updateCredential(RealmModel realm, UserModel user, CredentialInput input)");
-//		if (!(input instanceof UserCredentialModel))
-//			return false;
-//		if (!input.getType().equals(CredentialModel.PASSWORD))
-//			return false;
-//		UserCredentialModel cred = (UserCredentialModel) input;
-//		synchronized (properties) {
-//			properties.setProperty(user.getUsername(), cred.getValue());
-//			save();
-//		}
-//		return true;
-//	}
-//
-//	@Override
-//	public void disableCredentialType(RealmModel realm, UserModel user, String credentialType) {
-//		System.out.println("== disableCredentialType(RealmModel realm, UserModel user, String credentialType)");
-//		if (!credentialType.equals(CredentialModel.PASSWORD))
-//			return;
-//		synchronized (properties) {
-//			properties.setProperty(user.getUsername(), UNSET_PASSWORD);
-//			save();
-//		}
-//
-//	}
+		sb.append("id:");
+		sb.append(user.getId());
+		
+		user.getRealmRoleMappings();
+		user.getRoleMappings();
+		user.getGroups();
+		
+		return sb.toString();
+	}
 
 	private static final Set<String> disableableTypes = new HashSet<>();
 
 	static {
 		disableableTypes.add(CredentialModel.PASSWORD);
 	}
-
-//	@Override
-//	public Set<String> getDisableableCredentialTypes(RealmModel realm, UserModel user) {
-//		System.out.println("== getDisableableCredentialTypes(RealmModel realm, UserModel user)");
-//
-//		return disableableTypes;
-//	}
 
 	@Override
 	public void close() {
