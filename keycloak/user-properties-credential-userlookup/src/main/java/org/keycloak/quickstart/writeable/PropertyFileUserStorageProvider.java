@@ -17,18 +17,13 @@
 
 package org.keycloak.quickstart.writeable;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
 
-import org.keycloak.common.util.EnvUtil;
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputValidator;
@@ -42,7 +37,8 @@ import org.keycloak.storage.StorageId;
 import org.keycloak.storage.UserStorageProvider;
 import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
 import org.keycloak.storage.user.UserLookupProvider;
-import org.keycloak.storage.user.UserQueryProvider;
+
+import com.google.common.collect.Sets;
 
 /**
  * @author <a href="mailto:bill@burkecentral.com">Bill Burke</a>
@@ -50,15 +46,14 @@ import org.keycloak.storage.user.UserQueryProvider;
  */
 public class PropertyFileUserStorageProvider implements
 // Factory exige esta interface
-		UserStorageProvider, 
+		UserStorageProvider,
 
 // Usado para pesquisar usuário individualmente no console web, também é usado para recupear o token, 
 // principalmente no primeiro login, quando não há cache (getUserByUsername)
 		UserLookupProvider,
 
 // Precisa para pegar o token
-		CredentialInputValidator
-		{
+		CredentialInputValidator {
 
 	public static final String UNSET_PASSWORD = "#$!-UNSET-PASSWORD";
 
@@ -74,51 +69,68 @@ public class PropertyFileUserStorageProvider implements
 		this.model = model;
 		this.properties = properties;
 	}
-	
-    // UserLookupProvider methods
 
-    @Override
-    public UserModel getUserByUsername(String username, RealmModel realm) {
-    	System.out.println("== getUserByUsername(String username, RealmModel realm) ");
-        UserModel adapter = loadedUsers.get(username);
-        if (adapter == null) {
-            String password = properties.getProperty(username);
-            if (password != null) {
-                adapter = createAdapter(realm, username);
-                loadedUsers.put(username, adapter);
-            }
-        }
-        return adapter;
-    }
+	// UserLookupProvider methods
 
-    protected UserModel createAdapter(RealmModel realm, String username) {
-    	System.out.println("== createAdapter(RealmModel realm, String username) ");
-        return new AbstractUserAdapterFederatedStorage(session, realm, model) {
-            @Override
-            public String getUsername() {
-                return username;
-            }
+	@Override
+	public UserModel getUserByUsername(String username, RealmModel realm) {
+		System.out.println("== getUserByUsername(String username, RealmModel realm) ");
+		UserModel adapter = loadedUsers.get(username);
+		if (adapter == null) {
+			String password = properties.getProperty(username);
+			if (password != null) {
+				adapter = createAdapter(realm, username);
+				loadedUsers.put(username, adapter);
+			}
+		}
+		return adapter;
+	}
 
-            @Override
-            public void setUsername(String username) {
+	protected UserModel createAdapter(RealmModel realm, String username) {
+		System.out.println("== createAdapter(RealmModel realm, String username) ");
+		AbstractUserAdapterFederatedStorage abstractUser = new AbstractUserAdapterFederatedStorage(session, realm,
+				model) {
+			@Override
+			public String getUsername() {
+				return username;
+			}
 
-            }
-        };
-    }
+			@Override
+			public void setUsername(String username) {
 
-    @Override
-    public UserModel getUserById(String id, RealmModel realm) {
-    	System.out.println("== getUserById(String id, RealmModel realm) ");
-        StorageId storageId = new StorageId(id);
-        String username = storageId.getExternalId();
-        return getUserByUsername(username, realm);
-    }
+			}
+			
+			@Override
+		    public Set<GroupModel> getGroups() {
+//				for (GroupModel groupModel : realm.getGroups()) {
+//					System.out.println("getGroups --- GroupID: " + groupModel.getId());
+//					System.out.println("getGroups GroupName: " + groupModel.getName());
+//
+//					if ("LiquidacaoGrupo".equalsIgnoreCase(groupModel.getName())) {
+//						return new HashSet<GroupModel>(Arrays.asList(groupModel));
+//					}
+//				}
+				
+		    	return new HashSet<GroupModel>(realm.getGroups());
+		    }
+		};
 
-    @Override
-    public UserModel getUserByEmail(String email, RealmModel realm) {
-    	System.out.println("== getUserByEmail(String email, RealmModel realm) ");
-        return null;
-    }
+		return abstractUser;
+	}
+
+	@Override
+	public UserModel getUserById(String id, RealmModel realm) {
+		System.out.println("== getUserById(String id, RealmModel realm) ");
+		StorageId storageId = new StorageId(id);
+		String username = storageId.getExternalId();
+		return getUserByUsername(username, realm);
+	}
+
+	@Override
+	public UserModel getUserByEmail(String email, RealmModel realm) {
+		System.out.println("== getUserByEmail(String email, RealmModel realm) ");
+		return null;
+	}
 
 // CredentialInputValidator methods
 
@@ -136,33 +148,34 @@ public class PropertyFileUserStorageProvider implements
 
 	@Override
 	public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {
-		System.out.println("== isValid(RealmModel realm, UserModel user, CredentialInput input) realm:" + realm + "input: " + input);
+		System.out.println("== isValid(RealmModel realm, UserModel user, CredentialInput input) realm:" + realm
+				+ "input: " + input);
 		System.out.println("isValid -> UserModel:" + toPrintUserModel(user));
 		if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel))
 			return false;
-		
+
 		UserCredentialModel cred = (UserCredentialModel) input;
 		String password = properties.getProperty(user.getUsername());
 		if (password == null || UNSET_PASSWORD.equals(password))
 			return false;
 		return password.equals(cred.getValue());
 	}
-	
+
 	private String toPrintUserModel(UserModel user) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("email:");
 		sb.append(user.getEmail());
-		
+
 		sb.append("userName:");
 		sb.append(user.getUsername());
 
 		sb.append("id:");
 		sb.append(user.getId());
-		
+
 		user.getRealmRoleMappings();
 		user.getRoleMappings();
 		user.getGroups();
-		
+
 		return sb.toString();
 	}
 

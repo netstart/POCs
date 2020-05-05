@@ -213,7 +213,6 @@ public class UserModelImpl {
 			@Override
 			public void setServiceAccountClientLink(String clientInternalId) {
 			}
-
 		};
 	}
 }

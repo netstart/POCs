@@ -42,6 +42,7 @@ import org.keycloak.models.UserModel;
 import org.keycloak.storage.StorageId;
 import org.keycloak.storage.UserStorageProvider;
 import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
+import org.keycloak.storage.user.ImportSynchronization;
 import org.keycloak.storage.user.UserLookupProvider;
 import org.keycloak.storage.user.UserQueryProvider;
 import org.keycloak.storage.user.UserRegistrationProvider;
@@ -51,12 +52,28 @@ import org.keycloak.storage.user.UserRegistrationProvider;
  * @version $Revision: 1 $
  */
 public class PropertyFileUserStorageProvider implements
+//Factory exige esta interface
         UserStorageProvider,
+        
+// Usado para pesquisar usuário individualmente no console web, também é usado para recupear o token, 
+// principalmente no primeiro login, quando não há cache (getUserByUsername)
         UserLookupProvider,
+        
         CredentialInputValidator,
+// Precisa para pegar o token
         CredentialInputUpdater,
+        
         UserRegistrationProvider,
-        UserQueryProvider {
+
+// Precisa pra listar usuários no console web
+        UserQueryProvider
+        
+// Usado para sincronizar/importar offline 
+//        ImportSynchronization
+        
+// Pra verificar se um usuario previamente importado ainda eh valido
+// ImportedUserValidation  
+        {
 
 
     public static final String UNSET_PASSWORD="#$!-UNSET-PASSWORD";
@@ -78,7 +95,7 @@ public class PropertyFileUserStorageProvider implements
 
     @Override
     public UserModel getUserByUsername(String username, RealmModel realm) {
-    	System.out.println("== getUserByUsername ");
+    	System.out.println("== getUserByUsername(String username, RealmModel realm) ");
         UserModel adapter = loadedUsers.get(username);
         if (adapter == null) {
             String password = properties.getProperty(username);
@@ -105,7 +122,7 @@ public class PropertyFileUserStorageProvider implements
 	}
 
     protected UserModel createAdapter(RealmModel realm, String username) {
-    	System.out.println("== createAdapter ");
+    	System.out.println("== createAdapter(RealmModel realm, String username) ");
         return new AbstractUserAdapterFederatedStorage(session, realm, model) {
             @Override
             public String getUsername() {
@@ -125,7 +142,7 @@ public class PropertyFileUserStorageProvider implements
 
     @Override
     public UserModel getUserById(String id, RealmModel realm) {
-    	System.out.println("== getUserById ");
+    	System.out.println("== getUserById(String id, RealmModel realm) ");
         StorageId storageId = new StorageId(id);
         String username = storageId.getExternalId();
         return getUserByUsername(username, realm);
@@ -133,7 +150,7 @@ public class PropertyFileUserStorageProvider implements
 
     @Override
     public UserModel getUserByEmail(String email, RealmModel realm) {
-    	System.out.println("== getUserByEmail ");
+    	System.out.println("== getUserByEmail(String email, RealmModel realm) ");
         return null;
     }
 
@@ -147,7 +164,7 @@ public class PropertyFileUserStorageProvider implements
 
     @Override
     public List<UserModel> getUsers(RealmModel realm) {
-    	System.out.println("== getUsers");
+    	System.out.println("== getUsers(RealmModel realm)");
         return getUsers(realm, 0, Integer.MAX_VALUE);
     }
 

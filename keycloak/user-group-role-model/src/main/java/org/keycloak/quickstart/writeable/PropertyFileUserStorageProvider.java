@@ -17,10 +17,6 @@
 
 package org.keycloak.quickstart.writeable;
 
-import java.util.HashSet;
-import java.util.Properties;
-import java.util.Set;
-
 import org.keycloak.component.ComponentModel;
 import org.keycloak.credential.CredentialInput;
 import org.keycloak.credential.CredentialInputValidator;
@@ -52,26 +48,23 @@ public class PropertyFileUserStorageProvider implements
 	public static final String UNSET_PASSWORD = "#$!-UNSET-PASSWORD";
 
 	protected KeycloakSession session;
-	protected Properties properties;
 	protected ComponentModel model;
 // map of loaded users in this transaction
 
-	public PropertyFileUserStorageProvider(KeycloakSession session, ComponentModel model, Properties properties) {
+	public PropertyFileUserStorageProvider(KeycloakSession session, ComponentModel model) {
 		System.out.println("== Construtor PropertyFileUserStorageProvider ==");
 		this.session = session;
 		this.model = model;
-		this.properties = properties;
 	}
 
 	// UserLookupProvider methods
 
 	@Override
 	public UserModel getUserByUsername(String username, RealmModel realm) {
-		System.out.println("== getUserByUsername(String username, RealmModel realm) " + " username: " + username );
-		
+		System.out.println("== getUserByUsername(String username, RealmModel realm) " + " username: " + username);
 
 		if (username.equalsIgnoreCase("r2d2")) {
-			return  new UserModelImpl(model).createUserModel();
+			return new UserModelImpl(model).createUserModel();
 		}
 
 		return null;
@@ -96,8 +89,10 @@ public class PropertyFileUserStorageProvider implements
 
 	public boolean isConfiguredFor(RealmModel realm, UserModel user, String credentialType) {
 		System.out.println("== isConfiguredFor(RealmModel realm, UserModel user, String credentialType)");
-		String password = properties.getProperty(user.getUsername());
-		return credentialType.equals(CredentialModel.PASSWORD) && password != null;
+// verificar se a credencial é password e a senha não é vazia
+// return credentialType.equals(PasswordCredentialModel.TYPE) && password != null;
+// return credentialType.equals(CredentialModel.PASSWORD) && password != null;
+		return true;
 	}
 
 	@Override
@@ -110,39 +105,29 @@ public class PropertyFileUserStorageProvider implements
 	public boolean isValid(RealmModel realm, UserModel user, CredentialInput input) {
 		System.out.println("== isValid(RealmModel realm, UserModel user, CredentialInput input) realm:" + realm
 				+ "input: " + input);
-		System.out.println("isValid -> UserModel:" + toPrintUserModel(user));
+
+		System.out.println("isValid -> UserModel maybe null:" + user);
+		if (user != null) {
+			System.out.println("isValid -> UserModel not null: " + toPrint(user));
+		}
+
 		if (!supportsCredentialType(input.getType()) || !(input instanceof UserCredentialModel))
 			return false;
 
 		UserCredentialModel cred = (UserCredentialModel) input;
-		String password = properties.getProperty(user.getUsername());
-		if (password == null || UNSET_PASSWORD.equals(password))
+
+		if (cred.getValue() == null) {
+			System.out.println("isValid will be return false");
 			return false;
-		return password.equals(cred.getValue());
-	}
+		}
 
-	private String toPrintUserModel(UserModel user) {
-		StringBuilder sb = new StringBuilder();
-		sb.append("email:");
-		sb.append(user.getEmail());
+		if (UNSET_PASSWORD.equals(cred.getValue())) {
+			System.out.println("isValid will be return true because evalueted UNSET_PASSWORD");
+			return true;
+		}
 
-		sb.append("userName:");
-		sb.append(user.getUsername());
-
-		sb.append("id:");
-		sb.append(user.getId());
-
-		user.getRealmRoleMappings();
-		user.getRoleMappings();
-		user.getGroups();
-
-		return sb.toString();
-	}
-
-	private static final Set<String> disableableTypes = new HashSet<>();
-
-	static {
-		disableableTypes.add(CredentialModel.PASSWORD);
+		System.out.println("isValid will be return default true");
+		return true;
 	}
 
 	@Override
@@ -150,4 +135,27 @@ public class PropertyFileUserStorageProvider implements
 		System.out.println("== close()");
 
 	}
+
+	public String toPrint(UserModel userModel) {
+		if (userModel == null) {
+			return "";
+		}
+
+		StringBuilder sb = new StringBuilder();
+		sb.append("\nemail: ");
+		sb.append(userModel.getEmail());
+
+		sb.append(" userName: ");
+		sb.append(userModel.getUsername());
+
+		sb.append(" id: ");
+		sb.append(userModel.getId());
+
+//		userModel.getRealmRoleMappings();
+//		userModel.getRoleMappings();
+//		userModel.getGroups();
+
+		return sb.toString();
+	}
+
 }
