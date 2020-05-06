@@ -11,11 +11,11 @@
 	<packaging>jar</packaging>
 
 	<properties>
-		<version.wildfly.maven.plugin>1.2.2.Final</version.wildfly.maven.plugin>
-		<version.keycloak>9.0.3</version.keycloak>
+		<version.wildfly.maven.plugin>2.0.2.final</version.wildfly.maven.plugin>
+		<version.keycloak>10.0.0</version.keycloak>
 		<!-- https://repository.jboss.org/nexus/content/groups/public/org/wildfly/bom/wildfly-javaee8/ -->
 		<!-- <version.wildfly>17.0.1.Final</version.wildfly> -->
-		<version.wildfly>14.0.1.Final</version.wildfly>
+		<version.wildfly.version>17.0.1.Final</version.wildfly.version>
 
 		<version.json.javax>1.1.2</version.json.javax>
 		<version.yasson>1.0.1</version.yasson>
@@ -171,7 +171,7 @@
 			<dependency>
 				<groupId>org.wildfly.bom</groupId>
 				<artifactId>wildfly-javaee8</artifactId>
-				<version>${version.wildfly}</version>
+				<version>${version.wildfly.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
