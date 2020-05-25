@@ -17,7 +17,6 @@
 
 package org.keycloak.quickstart.writeable;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -38,8 +37,6 @@ import org.keycloak.storage.UserStorageProvider;
 import org.keycloak.storage.adapter.AbstractUserAdapterFederatedStorage;
 import org.keycloak.storage.user.UserLookupProvider;
 
-import com.google.common.collect.Sets;
-
 /**
  * @author <a href="mailto:bill@burkecentral.com">Bill Burke</a>
  * @version $Revision: 1 $
@@ -55,7 +52,7 @@ public class PropertyFileUserStorageProvider implements
 // Precisa para pegar o token
 		CredentialInputValidator {
 
-	public static final String UNSET_PASSWORD = "#$!-UNSET-PASSWORD";
+	public static final String UNSET_PASSWORD = "123";
 
 	protected KeycloakSession session;
 	protected Properties properties;
