@@ -21,6 +21,7 @@ public class CompanyService {
 
 	@Cacheable(cacheNames = Company.CACHE_NAME, key = "#root.method.name")
 	public List<Company> findAll() {
+		System.out.println("findAll");
 		return new ArrayList<>(companies.values());
 	}
 
@@ -29,6 +30,7 @@ public class CompanyService {
 	 */
 	@Cacheable(cacheNames = Company.CACHE_NAME, key = "#id")
 	public Company findbyId(final Long id) {
+		System.out.println("findbyId");
 		return companies.get(id);
 	}
 
@@ -37,6 +39,7 @@ public class CompanyService {
 	 */
 	@CacheEvict(cacheNames = Company.CACHE_NAME, allEntries = true)
 	public Company create(final Company company) {
+		System.out.println("create");
 		companies.put(company.getId(), company);
 		return company;
 	}
@@ -46,6 +49,7 @@ public class CompanyService {
 	 */
 	@CachePut(cacheNames = Company.CACHE_NAME, key = "#company.getId()")
 	public Company update(final Company company) {
+		System.out.println("update");
 		if (company.getId() == null) {
 			throw new EntityNotFoundException("Identifier is empty");
 		}
@@ -59,6 +63,7 @@ public class CompanyService {
 	 */
 	@CacheEvict(cacheNames = Company.CACHE_NAME, key = "#id")
 	public void delete(final Long id) {
+		System.out.println("delete");
 		if (id == null) {
 			throw new EntityNotFoundException("Identifier is empty");
 		}

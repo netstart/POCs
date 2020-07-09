@@ -1,3 +1,7 @@
+Demontra como usar o Redis como cache
+Neste caso o Cache também é conhecido em outros ecosistems como memoize
+
+
 docker run -it \
     --name redis \
     -p 6379:6379 \
