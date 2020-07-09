@@ -25,14 +25,20 @@ public class CompanyController {
     }
 
     @GetMapping("/{id}")
-    public Company findByIdentifier(@PathVariable("id") final Long id) {
+    public Company findById(@PathVariable("id") final Long id) {
         return companyService.findbyId(id);
+    }
+    
+    @GetMapping("/composite/{id}")
+    public Company findCompositebyId(@PathVariable("id") final Long id) {
+        return companyService.findCompositebyId(id);
     }
 
     @PostMapping
     public Company create(@RequestBody final Company company) {
         return companyService.create(company);
     }
+   
 
     @PutMapping
     public Company update(@RequestBody final Company company) {

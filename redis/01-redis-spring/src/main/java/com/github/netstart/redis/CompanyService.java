@@ -34,8 +34,8 @@ public class CompanyService {
 		return companies.get(id);
 	}
 
-	/** 
-	 * Se existir, exclui do cache, e NÃO  atualiza com a nova informação
+	/**
+	 * Se existir, exclui do cache, e NÃO atualiza com a nova informação
 	 */
 	@CacheEvict(cacheNames = Company.CACHE_NAME, allEntries = true)
 	public Company create(final Company company) {
@@ -45,7 +45,7 @@ public class CompanyService {
 	}
 
 	/**
-	 * Atualiza o cache se existir, cria se não existir
+	 * Atualiza o cache se existir, se não existir da erro
 	 */
 	@CachePut(cacheNames = Company.CACHE_NAME, key = "#company.getId()")
 	public Company update(final Company company) {
@@ -58,7 +58,7 @@ public class CompanyService {
 		return company;
 	}
 
-	/** 
+	/**
 	 * Se existir, exclui do cache
 	 */
 	@CacheEvict(cacheNames = Company.CACHE_NAME, key = "#id")
@@ -69,5 +69,21 @@ public class CompanyService {
 		}
 
 		companies.remove(id);
+	}
+
+	/**
+	 * Apesar de criar o cache, no método findCompositebyIdCache.
+	 * 
+	 * Não é utilizado pra recuperar o dado, não funciona como memoize
+	 */
+	public Company findCompositebyId(final Long id) {
+		System.out.println("findCompositebyId");
+		return findCompositebyIdCache(companies.get(id));
+	}
+
+	@Cacheable(cacheNames = Company.CACHE_NAME, key = "#company.id")
+	public Company findCompositebyIdCache(Company company) {
+		System.out.println("cache");
+		return company;
 	}
 }

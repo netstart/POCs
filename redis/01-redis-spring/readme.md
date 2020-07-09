@@ -12,7 +12,7 @@ docker run -it \
 curl -s http://localhost:8080/company \
  -H "Content-Type: application/json" \
  -d '{"id": "1010", "name": "Company 1"}'
-
+ 
 curl -s http://localhost:8080/company \
  -H "Content-Type: application/json" \
  -d '{"id": "1020", "name": "Company 2"}'
@@ -34,6 +34,8 @@ curl -s -X PUT http://localhost:8080/company \
  curl -s -X PUT http://localhost:8080/company \
  -H "Content-Type: application/json" \
  -d '{"id": "1030", "name": "Company 10301030"}'
+ 
+curl -s http://localhost:8080/company/composite/1030
  
 curl -s http://localhost:8080/company/1010
 
