@@ -86,6 +86,7 @@ public class CompanyService {
 	}
 
 	/** ha situações como esta que o cache não é criada
+	 */
 	@Cacheable(cacheNames = "findCompositebyIdCacheble",  key = "#company.id")
 	public Company findCompositebyIdCacheble(Company company) {
 		System.out.println("cache");
