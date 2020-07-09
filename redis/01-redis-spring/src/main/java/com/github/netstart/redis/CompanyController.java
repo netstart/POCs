@@ -33,6 +33,12 @@ public class CompanyController {
     public Company findCompositebyId(@PathVariable("id") final Long id) {
         return companyService.findCompositebyId(id);
     }
+    
+    @GetMapping("/allattribute/{id}")
+    public Company cacheUsingAllInputAttributes(@PathVariable("id") final Long id) {
+    	Company company = companyService.findByIdWithoutCache(id);
+        return companyService.cacheUsingAllInputAttributes(company.getName(), id);
+    }
 
     @PostMapping
     public Company create(@RequestBody final Company company) {

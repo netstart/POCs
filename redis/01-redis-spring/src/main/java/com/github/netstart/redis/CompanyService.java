@@ -11,6 +11,10 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 @Service
+/**
+ * https://docs.spring.io/spring/docs/3.2.x/spring-framework-reference/html/cache.html
+ */
+
 public class CompanyService {
 
 	private Map<Long, Company> companies = new HashMap<>();
@@ -78,12 +82,37 @@ public class CompanyService {
 	 */
 	public Company findCompositebyId(final Long id) {
 		System.out.println("findCompositebyId");
-		return findCompositebyIdCache(companies.get(id));
+		return findCompositebyIdCacheble(companies.get(id));
 	}
 
-	@Cacheable(cacheNames = Company.CACHE_NAME, key = "#company.id")
-	public Company findCompositebyIdCache(Company company) {
+	/** ha situações como esta que o cache não é criada
+	@Cacheable(cacheNames = "findCompositebyIdCacheble",  key = "#company.id")
+	public Company findCompositebyIdCacheble(Company company) {
 		System.out.println("cache");
+		// assim não serve como memoize
 		return company;
+		
+		// assim nem cria o cache
+		// return findByIdWithoutCache(company.getId());
+	}
+	
+	
+	/** Irá utilizar todos os atributos de entrada do método para formar a chave
+	 * 
+	 * A chave ficará assim:  "Company::SimpleKey [Company 10301030,1030]"
+	 * 
+	 * Poderia fazer assim 	@Cacheable(value =Company.CACHE_NAME, key="#name + #id" )
+	 * "Company::Company 3 1030"
+	 */
+//	@Cacheable(cacheNames = Company.CACHE_NAME)
+	@Cacheable(value =Company.CACHE_NAME, key="#name + #id" )
+	public Company cacheUsingAllInputAttributes(String name, Long id) {
+		System.out.println("usingAllInputAttributes");
+		return companies.get(id);
+	}
+	
+	
+	public Company findByIdWithoutCache(Long id) {
+		return companies.get(id);
 	}
 }
