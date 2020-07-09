@@ -14,8 +14,8 @@ curl -s http://localhost:8080/company -H "Content-Type: application/json" -d '{"
 curl -s http://localhost:8080/company -H "Content-Type: application/json" -d '{"id": "1030", "name": "Company 3 "}'
 curl -s http://localhost:8080/company -H "Content-Type: application/json" -d '{"id": "1040", "name": "Company 4 "}'
  
-curl -s http://localhost:8080/company/composite/1030
 curl -s http://localhost:8080/company/allattribute/1030
+curl -s http://localhost:8080/company/composite/1030
 
 curl -s http://localhost:8080/company/1010
 curl -s http://localhost:8080/company/
