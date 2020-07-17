@@ -37,6 +37,9 @@ public class CacheService {
 		redisTemplate.delete("query-key:clayton@gmail.com:*");
 		System.out.println("keys size after delete * : " + redisTemplate.keys("query-key:clayton@gmail.com:*").size());
 		
+		redisTemplate.opsForValue().set("XPTO","¯\\_(ツ)_/¯", 100);
+		System.out.println("keys: " + redisTemplate.keys("XPTO"));
+		
 		return redisTemplate.keys("query-key:clayton@gmail.com:*").size();
 	}
 	
