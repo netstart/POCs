@@ -13,12 +13,12 @@ public class CacheService {
 	@Autowired
 	private RedisTemplate<String, String> redisTemplate;
 
-	public void create(String key) {
+	public void create(String value) {
 		// Cria o registro com ttl de 30 segundos
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), key, 1, TimeUnit.MINUTES);
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), key, 30, TimeUnit.SECONDS);
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 1, TimeUnit.MINUTES);
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 30, TimeUnit.SECONDS);
 		
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:112365324", key, 30, TimeUnit.SECONDS);
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:112365324", value, 30, TimeUnit.SECONDS);
 	}
 
 	public Integer info() {
@@ -37,8 +37,8 @@ public class CacheService {
 		redisTemplate.delete("query-key:clayton@gmail.com:*");
 		System.out.println("keys size after delete * : " + redisTemplate.keys("query-key:clayton@gmail.com:*").size());
 		
-		redisTemplate.opsForValue().set("XPTO","¯\\_(ツ)_/¯", 100);
-		System.out.println("keys: " + redisTemplate.keys("XPTO"));
+		redisTemplate.opsForValue().set("XPTO", "¯\\_(ツ)_/¯", 100, TimeUnit.MINUTES);
+		System.out.println("keys: " + redisTemplate.keys("XPTO*"));
 		
 		return redisTemplate.keys("query-key:clayton@gmail.com:*").size();
 	}
