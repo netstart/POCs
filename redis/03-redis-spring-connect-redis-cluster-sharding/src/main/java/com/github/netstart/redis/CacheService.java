@@ -19,6 +19,8 @@ public class CacheService {
 		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 30, TimeUnit.SECONDS);
 		
 		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:112365324", value, 30, TimeUnit.SECONDS);
+		
+		redisTemplate.opsForValue().set("XPTO", "¯\\_(ツ)_/¯", 10, TimeUnit.MINUTES);
 	}
 
 	public Integer info() {
@@ -36,9 +38,8 @@ public class CacheService {
 		
 		redisTemplate.delete("query-key:clayton@gmail.com:*");
 		System.out.println("keys size after delete * : " + redisTemplate.keys("query-key:clayton@gmail.com:*").size());
-		
-		redisTemplate.opsForValue().set("XPTO", "¯\\_(ツ)_/¯", 100, TimeUnit.MINUTES);
-		System.out.println("keys: " + redisTemplate.keys("XPTO*"));
+
+		System.out.println("keys XPTO: " + redisTemplate.keys("XPTO*"));
 		
 		return redisTemplate.keys("query-key:clayton@gmail.com:*").size();
 	}
