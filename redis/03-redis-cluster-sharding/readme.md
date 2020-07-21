@@ -34,3 +34,12 @@ set cidade Maringa
 set pais Brasil
 ```
 
+
+
+
+Redis commands that involve multiple keys, like MSET will not work with redis cluster
+
+```
+127.0.0.1:7000> MSET Book:3 "Moby Dick" Book:4 "Pride and Prejudice" Book:5 "Tom Sawyer"
+(error) CROSSSLOT Keys in request don't hash to the same slot
+```
