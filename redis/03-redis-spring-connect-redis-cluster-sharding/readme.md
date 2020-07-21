@@ -21,3 +21,6 @@ curl -s -X POST http://localhost:8080/company/cache/1010 -H "Content-Type: appli
 
 Executa o método info
 curl -s http://localhost:8080/company/cache/ -H "Content-Type: application/json"
+
+
+Executar `keys *` através do cliente `redis-cli` tem resultado diferente de usar o `redisTemplate.keys("*")`, o spring vai em cada nó e realiza a consulta e consolida para nós, `redis-cli` não. O `redis-cli` consulta apenas no nó corrente. 
