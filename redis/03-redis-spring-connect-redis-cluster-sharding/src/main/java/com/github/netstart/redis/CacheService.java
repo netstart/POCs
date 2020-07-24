@@ -15,15 +15,15 @@ public class CacheService {
 
 	public void create(String value) {
 		// Cria o registro com ttl de 30 segundos
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 10, TimeUnit.MINUTES);
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 60, TimeUnit.MINUTES);
 		System.out.println("keys size 1: " + redisTemplate.keys("query-key:*").size());
 		System.out.println("keys array size 1: " + redisTemplate.keys("query-key:*"));
 		
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 30, TimeUnit.MINUTES);
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 60, TimeUnit.MINUTES);
 		System.out.println("keys size 2: " + redisTemplate.keys("*").size());
 		System.out.println("keys array size 2: " + redisTemplate.keys("query-key:*"));	
 		
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:112365324", value, 30, TimeUnit.MINUTES);
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:112365324", value, 60, TimeUnit.MINUTES);
 		System.out.println("keys size 3: " + redisTemplate.keys("*").size());
 		System.out.println("keys array size 3: " + redisTemplate.keys("query-key:*"));
 		

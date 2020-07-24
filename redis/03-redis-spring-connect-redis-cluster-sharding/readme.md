@@ -36,23 +36,19 @@ docker push netstart/spring-redis:latest
 kubectl run k8s-deployment-spring-redis --image=netstart/spring-redis:latest
 ```
 
-kubectl run {DEPLOYMENT_NAME} --image= {YOUR_IMAGE} --port=8080
-
 * The flag –image-pull-policy Never ensures, that Minikube doesn't try to pull the image from a registry, but takes it from the local Docker host instead.
-
-kubectl get deployments
 
 
 kubectl get pods
 
 ```
 NAME                                            READY   STATUS             RESTARTS   AGE
-spring-redis-65d94bb588-ftpkz                   0/1     ImagePullBackOff   0          87s
+k8s-deployment-spring-redis                    0/1     ImagePullBackOff   0          87s
 ```
 
-kubectl exec -ti spring-redis-65d94bb588-ftpkz bash
+kubectl exec -ti k8s-deployment-spring-redis  bash
 
-kubectl exec spring-redis-65d94bb588-ftpkz env
+kubectl exec k8s-deployment-spring-redis env
 
 kubectl expose deployment/k8s-deployment-spring-redis --type="NodePort" --port 8080
 
