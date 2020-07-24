@@ -1,5 +1,7 @@
 package com.github.netstart.redis;
 
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +21,7 @@ public class RedisApplication implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		cacheService.create("Executado na inicializacao");
+		cacheService.create("Executado na inicializacao: " + new Date().toString());
 	}
 
 }

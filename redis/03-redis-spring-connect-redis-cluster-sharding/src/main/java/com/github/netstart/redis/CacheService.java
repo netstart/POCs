@@ -22,14 +22,30 @@ public class CacheService {
 		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:" + new Date().getTime(), value, 60, TimeUnit.MINUTES);
 		System.out.println("keys size 2: " + redisTemplate.keys("*").size());
 		System.out.println("keys array size 2: " + redisTemplate.keys("query-key:*"));	
-		
-		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:112365324", value, 60, TimeUnit.MINUTES);
+
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:03", value, 60, TimeUnit.MINUTES);
 		System.out.println("keys size 3: " + redisTemplate.keys("*").size());
 		System.out.println("keys array size 3: " + redisTemplate.keys("query-key:*"));
-		
-		redisTemplate.opsForValue().set("XPTO", "¯\\_(ツ)_/¯", 10, TimeUnit.MINUTES);
+
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:04", value, 60, TimeUnit.MINUTES);
 		System.out.println("keys size 4: " + redisTemplate.keys("*").size());
-		System.out.println("keys array size 4: " + redisTemplate.keys("*"));
+		System.out.println("keys array size 4: " + redisTemplate.keys("query-key:*"));
+		
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:05", value, 60, TimeUnit.MINUTES);
+		System.out.println("keys size 5: " + redisTemplate.keys("*").size());
+		System.out.println("keys array size 5: " + redisTemplate.keys("query-key:*"));
+		
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:06", value, 60, TimeUnit.MINUTES);
+		System.out.println("keys size 6: " + redisTemplate.keys("*").size());
+		System.out.println("keys array size 6: " + redisTemplate.keys("query-key:*"));
+		
+		redisTemplate.opsForValue().set("query-key:clayton@gmail.com:07", value, 60, TimeUnit.MINUTES);
+		System.out.println("keys size 7: " + redisTemplate.keys("*").size());
+		System.out.println("keys array size 7: " + redisTemplate.keys("query-key:*"));
+		
+		redisTemplate.opsForValue().set("XPTO", "¯\\_(ツ)_/¯", 60, TimeUnit.MINUTES);
+		System.out.println("keys size 8: " + redisTemplate.keys("*").size());
+		System.out.println("keys array size 8: " + redisTemplate.keys("*"));
 		
 	}
 

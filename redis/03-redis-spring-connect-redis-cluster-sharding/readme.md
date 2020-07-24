@@ -46,13 +46,6 @@ NAME                                            READY   STATUS             RESTA
 k8s-deployment-spring-redis                    0/1     ImagePullBackOff   0          87s
 ```
 
-kubectl exec -ti k8s-deployment-spring-redis  bash
-
-kubectl exec k8s-deployment-spring-redis env
-
-kubectl expose deployment/k8s-deployment-spring-redis --type="NodePort" --port 8080
-
-kubectl describe services/k8s-deployment-spring-redis
 
 minikube ip
 
