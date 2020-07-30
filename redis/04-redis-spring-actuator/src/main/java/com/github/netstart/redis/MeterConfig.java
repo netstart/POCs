@@ -12,7 +12,7 @@ import io.micrometer.core.instrument.MeterRegistry;
  *
  */
 @Configuration
-public class MeterController {
+public class MeterConfig {
 
 	@Autowired
 	MeterRegistry registry;

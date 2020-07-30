@@ -15,22 +15,30 @@ spring.cache.type=redis
 ```
 
 
-#### Cria registros no redis usando RedisTemplate
+#### 
 
+
+
+Ao executar 
+`
 curl -s -X POST http://localhost:8080/company/cache/1010 -H "Content-Type: application/json"
+`
+
+Vai criar novos registros, que podem ser acompanhados no prometheus: http://localhost:8080/actuator/prometheus
+
+E podem ser procurados na página por:
+
+- protection_scan_key_total_query_all
+- protection_scan_key_total_bloqued
+- protection_scan_key_total_invalid_query_all
 
 Executa o método info
 curl -s http://localhost:8080/company/cache/ -H "Content-Type: application/json"
 
 
-Ver as métricas em: http://localhost:8080/actuator/prometheus
 
-Acompanhar: protection_scan_key_total_query_all
 
-Criar a métrica abrindo:
-- http://localhost:8080/meter/total-query
-- http://localhost:8080/meter/total-invalid-query
-- http://localhost:8080/meter/total-bloqueado
+
 
 
 ### Packs supported of Meter https://docs.spring.io/spring-metrics/docs/current/public/prometheus
