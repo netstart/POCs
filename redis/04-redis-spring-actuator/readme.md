@@ -20,7 +20,7 @@ A classe IndicadorTotalConsultasHealthIndicator configura e disponibiliza inform
 
 
 
-#### Prometheus
+#### Prometheus (ver classe MeterConfig)
 
 
 
