@@ -23,4 +23,12 @@ Executa o método info
 curl -s http://localhost:8080/company/cache/ -H "Content-Type: application/json"
 
 
+Ver as métricas em: http://localhost:8080/actuator/prometheus
+
+Acompanhar: protection_scan_key_total_query_all
+
+Criar a métrica abrindo:
+- http://localhost:8080/meter/total-query
+- http://localhost:8080/meter/total-invalid-query
+- http://localhost:8080/meter/total-bloqueado
 

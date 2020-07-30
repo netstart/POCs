@@ -5,8 +5,14 @@ import org.springframework.boot.actuate.health.AbstractHealthIndicator;
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.stereotype.Component;
 
+/**
+ * Acessar: http://localhost:8080/actuator/health
+ * 
+ * A parte antes do HealthIndicator do nome da classe vai fazer parte da chave no json, 
+ *
+ */
 @Component
-public class CustomHealthIndicator extends AbstractHealthIndicator {
+public class IndicadorTotalConsultasHealthIndicator extends AbstractHealthIndicator {
 
 	@Autowired
 	private CacheService cacheService;
@@ -16,7 +22,7 @@ public class CustomHealthIndicator extends AbstractHealthIndicator {
 		builder
 			.withDetail("totalBloqueado", cacheService.totalBloqueado())
 			.withDetail("totalConsultasInvalida", cacheService.totalConsultasInvalida())
-			.withDetail("totalDaAplicacaoToda", cacheService.totalDaAplicacaoToda())
-			.down();
+			.withDetail("totalConsultasDaAplicacaoToda", cacheService.totalConsultasDaAplicacaoToda())
+			.up();
 	}
 }

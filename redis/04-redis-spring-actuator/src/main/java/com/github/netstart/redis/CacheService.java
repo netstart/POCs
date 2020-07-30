@@ -72,7 +72,7 @@ public class CacheService {
 		return redisTemplate.keys("query-key:clayton@gmail.com:*").size();
 	}
 	
-	public Integer totalDaAplicacaoToda() {
+	public Integer totalConsultasDaAplicacaoToda() {
 		return redisTemplate.keys("query-key:*").size();
 	}
 	
