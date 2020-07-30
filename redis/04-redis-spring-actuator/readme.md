@@ -15,7 +15,12 @@ spring.cache.type=redis
 ```
 
 
-#### 
+#### actuator/health
+A classe IndicadorTotalConsultasHealthIndicator configura e disponibiliza informações no: http://localhost:8080/actuator/health
+
+
+
+#### Prometheus
 
 
 
