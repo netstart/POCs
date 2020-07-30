@@ -1,5 +1,7 @@
 package com.github.netstart.redis;
 
+import java.util.Collections;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,7 +48,8 @@ public class MeterController {
 
 		// Assim não atualiza em tempo de execução
 		 registry.gauge("protection.scan.key.total.query.all.x", cacheService.totalConsultasDaAplicacaoToda());
-		
+		 
+		// Assim, ao chamar /actuator/prometheus ele irá buscar a informação no cacheService e atualizar o valor
 		Gauge
 			.builder("protection.scan.key.total.query.all", ()-> cacheService.totalConsultasDaAplicacaoToda())
 			.description("Total of key query on the window time: ")

@@ -1,6 +1,7 @@
 package com.github.netstart.redis;
 
 import java.util.Date;
+import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,6 +71,10 @@ public class CacheService {
 		System.out.println("keys XPTO: " + redisTemplate.keys("XPTO*"));
 		
 		return redisTemplate.keys("query-key:clayton@gmail.com:*").size();
+	}
+	
+	public Set<String> queryKeys() {
+		return redisTemplate.keys("query-key:*");
 	}
 	
 	public Integer totalConsultasDaAplicacaoToda() {
