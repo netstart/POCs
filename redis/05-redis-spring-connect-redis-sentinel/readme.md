@@ -111,11 +111,16 @@ minikube ip
 
 - https://gorillalogic.com/blog/build-and-deploy-a-spring-boot-app-on-kubernetes-minikube/
 - https://www.baeldung.com/spring-boot-minikube
+
+- https://github.com/bitnami/charts/tree/master/bitnami/redis
+- https://redis.io/topics/sentinel
 - https://docs.bitnami.com/general/infrastructure/kubernetes-sandbox/get-started/get-started/
 - https://docs.bitnami.com/tutorials/deploy-redis-sentinel-production-cluster/
 
 - https://docs.bitnami.com/tutorials/secure-kubernetes-services-with-ingress-tls-letsencrypt
 - https://docs.bitnami.com/kubernetes/how-to/get-started-serverless-computing-kubeless/
+
+- https://medium.com/trendyol-tech/high-availability-with-redis-sentinel-and-spring-lettuce-client-9da40525fc82
 
 
 #### Diferença ao usar keys * e keys do redisTemplate
