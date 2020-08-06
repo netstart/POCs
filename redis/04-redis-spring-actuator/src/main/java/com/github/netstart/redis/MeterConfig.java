@@ -7,10 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import io.micrometer.core.instrument.Gauge;
 import io.micrometer.core.instrument.MeterRegistry;
 
-/**
- * https://blog.autsoft.hu/defining-custom-metrics-in-a-spring-boot-application-using-micrometer/
- *
- */
+
 @Configuration
 public class MeterConfig {
 
@@ -37,7 +34,7 @@ public class MeterConfig {
 		 * Assim, ao chamar /actuator/prometheus ele irá buscar a informação no cacheService e atualizar o valor
 		 * 
 		 * Para não ir sempre no Redis, e acabar se tornando lento, 
-		 * é legal usar @Cacheble ou outro mecanismo de cache de armazenamento local (armazenamento em memória da própria aplicação), 
+		 * é legal usar @Cacheble ou outro mecanismo de cache de armazenamento local, 
 		 * que expira de tempos em tempos.
 		 */
 		return Gauge

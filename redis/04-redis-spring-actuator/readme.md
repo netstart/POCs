@@ -48,6 +48,9 @@ curl -s http://localhost:8080/company/cache/ -H "Content-Type: application/json"
 
 ### Packs supported of Meter https://docs.spring.io/spring-metrics/docs/current/public/prometheus
 
+https://micrometer.io/docs/concepts
+
+
 A meter is the interface for collecting a set of measurements (which we individually call metrics) about your application. spring-metrics packs with a supported set of Meter primitives including: Timer, Counter, Gauge, DistributionSummary, and LongTaskTimer. Note that different meter types result in a different number of metrics. For example, while there is a single metric that represents a Gauge, a Timer measures both number of timed events and the total time of all events timed.
 
 A registry creates and manages your application's set of meters. Exporters use the meter registry to iterate over the set of meters instrumenting your application, and then further iterate over each meter's metrics, generally resulting in a time series in the metrics backend for each combination of metrics and dimensions.
@@ -63,6 +66,8 @@ The appropriate base unit for timers does vary by metrics backend for good reaso
 
 #### Gauges
 A Gauge measures and returns the observed value when the meter is published (or queried).
+
+Gauge gives us instantaneous data like the length of a queue
 
 A gauge is a handle to get the current value. Typical examples for gauges would be the size of a collection or map or number of threads in a running state.
 
