@@ -10,6 +10,9 @@ Instala o Redis com Sentinel
 
 ```
 helm install my-release bitnami/redis --values ./etc/redis/values.yaml
+
+helm install my-release bitnami/redis --namespace YOURNAMESPACE --values ./etc/redis/values.yaml
+
 ```
 
 Irá criar 3 services:
@@ -21,7 +24,7 @@ Irá criar 3 services:
 `redis-cli -h POD-NAME.HEADLESS-SVC-NAME -a $REDIS_PASSWORD`
 
 
-Cria pod client, para se conectar diretamente no redis-server
+Cria pod client, para se conectar diretamente no redis-server ou no sentinel
 
 ```
 kubectl run --namespace default my-release-redis-client --rm --tty -i --restart='Never' --image docker.io/bitnami/redis:6.0.5-debian-10-r32 -- bash
@@ -93,7 +96,7 @@ docker login
 mvn clean package
 docker build --build-arg JAR_FILE=target/*.jar -t netstart/spring-redis:latest .
 docker push netstart/spring-redis:latest
-kubectl run k8s-deployment-spring-redis --image=netstart/spring-redis:latest
+kubectl run app-spring-redis --image=netstart/spring-redis:latest
 ```
 
 
@@ -121,6 +124,8 @@ minikube ip
 - https://docs.bitnami.com/kubernetes/how-to/get-started-serverless-computing-kubeless/
 
 - https://medium.com/trendyol-tech/high-availability-with-redis-sentinel-and-spring-lettuce-client-9da40525fc82
+
+- headless service - https://kubernetes.io/docs/concepts/services-networking/service/#headless-services
 
 
 #### Diferença ao usar keys * e keys do redisTemplate
