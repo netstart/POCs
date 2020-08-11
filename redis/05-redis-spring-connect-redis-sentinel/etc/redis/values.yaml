@@ -18,7 +18,7 @@ image:
   ## Bitnami Redis image tag
   ## ref: https://github.com/bitnami/bitnami-docker-redis#supported-tags-and-respective-dockerfile-links
   ##
-  tag: 6.0.5-debian-10-r32
+  tag: 6.0.6-debian-10-r10
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -42,7 +42,7 @@ image:
 ## Cluster settings
 cluster:
   enabled: true
-  slaveCount: 2
+  slaveCount: 1
 
 ## Use redis sentinel in the redis pod. This will disable the master and slave services and
 ## create one redis service with ports to the sentinel and the redis instances
@@ -60,7 +60,7 @@ sentinel:
     ## Bitnami Redis image tag
     ## ref: https://github.com/bitnami/bitnami-docker-redis-sentinel#supported-tags-and-respective-dockerfile-links
     ##
-    tag: 6.0.5-debian-10-r28
+    tag: 6.0.6-debian-10-r11
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
     ## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -72,9 +72,9 @@ sentinel:
     ##
     # pullSecrets:
     #   - myRegistryKeySecretName
-  masterSet: mymaster
+  masterSet: mipmaster
   initialCheckTimeout: 5
-  quorum: 2
+  quorum: 1
   downAfterMilliseconds: 60000
   failoverTimeout: 18000
   parallelSyncs: 1
@@ -195,12 +195,12 @@ securityContext:
   #   value: "10000"
 
 ## Use password authentication
-usePassword: false
+usePassword: true
 ## Redis password (both master and slave)
 ## Defaults to a random 10-character alphanumeric string if not set and usePassword is true
 ## ref: https://github.com/bitnami/bitnami-docker-redis#setting-the-server-password-on-first-run
 ##
-password: ""
+password: "PasswordToAccessRedis"
 ## Use existing secret (ignores previous password)
 # existingSecret:
 ## Password key to be retrieved from Redis secret
@@ -272,8 +272,8 @@ master:
   ## ref: https://redis.io/topics/security#disabling-of-specific-commands
   ##
   disableCommands:
-    - FLUSHDB
-    - FLUSHALL
+    # - FLUSHDB
+    # - FLUSHALL
 
   ## Redis Master additional pod labels and annotations
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
@@ -282,10 +282,10 @@ master:
 
   ## Redis Master resource requests and limits
   ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
-  # resources:
-  #   requests:
-  #     memory: 256Mi
-  #     cpu: 100m
+  resources:
+    requests:
+      memory: 1024Mi
+      cpu: 100m
   ## Use an alternate scheduler, e.g. "stork".
   ## ref: https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/
   ##
@@ -439,8 +439,8 @@ slave:
   extraFlags: []
   ## List of Redis commands to disable
   disableCommands:
-    - FLUSHDB
-    - FLUSHALL
+    #- FLUSHDB
+    #- FLUSHALL
 
   ## Redis Slave pod/node affinity/anti-affinity
   ##
@@ -495,10 +495,10 @@ slave:
   customReadinessProbe: {}
 
   ## Redis slave Resource
-  # resources:
-  #   requests:
-  #     memory: 256Mi
-  #     cpu: 100m
+  resources:
+    requests:
+      memory: 1024Mi
+      cpu: 100m
 
   ## Redis slave selectors and tolerations for pod assignment
   # nodeSelector: {"beta.kubernetes.io/arch": "amd64"}
@@ -559,7 +559,7 @@ metrics:
   image:
     registry: docker.io
     repository: bitnami/redis-exporter
-    tag: 1.9.0-debian-10-r2
+    tag: 1.9.0-debian-10-r20
     pullPolicy: IfNotPresent
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.

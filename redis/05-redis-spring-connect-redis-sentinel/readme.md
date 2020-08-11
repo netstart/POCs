@@ -59,6 +59,7 @@ Cria um redirecionamento de porta local para dentro do service do Kubernetes par
 ```
 kubectl port-forward svc/SVC-NAME PORT:PORT
 kubectl port-forward svc/my-release-redis-metrics 9121:9121
+curl localhost:9121/metrics
 ```
 
 Enquanto o rediorecionamento de porta acima estiver em execução, o terminal ficará preso. Poderia executar o comando segundo plano, ou então utilizar outro terminal para coletar manualmente a métrica a fim de testar com o comando abaixo:
