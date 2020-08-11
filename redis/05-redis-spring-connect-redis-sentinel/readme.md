@@ -77,7 +77,56 @@ kubectl scale sts my-release-redis-master --replicas=0
 ```
 
 
+```
 
+To get your password run:
+	export REDIS_PASSWORD=$(kubectl get secret --namespace default my-release-redis -o jsonpath="{.data.redis-password}" | base64 --decode)
+
+To connect to your Redis server:
+1. Run a Redis pod that you can use as a client:
+   kubectl run --namespace default my-release-redis-client --rm --tty -i --restart='Never' \
+    --env REDIS_PASSWORD=$REDIS_PASSWORD \
+   --image docker.io/bitnami/redis:6.0.6-debian-10-r10 -- bash
+
+2. Connect using the Redis CLI:
+   redis-cli -h my-release-redis -p 6379 -a $REDIS_PASSWORD # Read only operations
+   redis-cli -h my-release-redis -p 26379 -a $REDIS_PASSWORD # Sentinel access
+
+```
+
+Confira a criação do redis com os comandos:
+
+```
+$ kubectl get pods
+$ kubectl get svc
+$ kubectl get secret
+```
+
+Confira se o service que dá acesso às métricas está acessível, executando os comandos abaixo e verificando as métricas:
+
+```
+$ kubectl port-forward svc/my-release-redis-metrics 9121:9121
+$ curl localhost:9121/metrics
+```
+
+Confira a instalação, acessando o service do Redis para criar e consultar dados:
+
+```
+$ kubectl port-forward service/my-release-redis 6379:6379
+$ redis-cli -p 6379 -a PasswordToAccessRedis
+$ setex key:teste:01 60 valueTest
+$ keys *
+```
+
+Confira se o sentinel está em execução:
+
+```
+$ kubectl port-forward service/my-release-redis 26379:26379
+$ redis-cli -p 26379
+$ sentinel masters
+```
+
+Criar uma porta local fazendo redirecionamento para outro dentro do Cluster: `https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/`
 
 
 #### Cria registros no redis usando RedisTemplate
