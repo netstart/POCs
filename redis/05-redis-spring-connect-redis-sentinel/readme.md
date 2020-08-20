@@ -176,6 +176,8 @@ minikube ip
 - https://medium.com/trendyol-tech/high-availability-with-redis-sentinel-and-spring-lettuce-client-9da40525fc82
 
 - headless service - https://kubernetes.io/docs/concepts/services-networking/service/#headless-services
+- https://kubernetes.io/docs/tasks/access-application-cluster/port-forward-access-application-cluster/
+- https://docs.redislabs.com/latest/platforms/kubernetes/sizing-kubernetes/
 
 
 #### Diferença ao usar keys * e keys do redisTemplate
@@ -193,5 +195,43 @@ RedisTemplate provides access to cluster-specific operations through the [Cluste
 KEYS * runs over all the keys in your DB and counts their total. Again, Redis a single-threaded database. This means that during this expensive process, the DB is unresponsive to your application! NEVER run this command in a production environment.
 
 SMEMBERS is a command that returns the values stored per key in a given set. If the purpose of running the command is simply to count the number of active sessions, do NOT use this command. Its cardinality is O(n) (similar to KEYS command above), and could “stop the world” in the middle of your production. Based on your Spring Session setup, you might have a set with the key FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME that can hold all / many of the sessions in the system, which makes this command not very different than KEYS.
+
+
+
+### Helm
+
+Login
+
+```
+helm registry login -u clayton.passos reg.matera.com
+```
+
+Adicionar o repositório a lista de repositórios
+
+```
+helm repo add --username=clayton.passos --password=XPTO harbor-third-party https://reg.matera.com/chartrepo/third-party 
+helm repo list
+helm repo update
+
+```
+
+Instalar o plugin para do chartmusian para empacotar: `https://github.com/chartmuseum/helm-push`
+
+Empacotar e enviar pro repositório:
+
+```
+helm package ./
+helm push ./redis-10.7.16.tgz harbor-third-party
+```
+
+Instalar no K8s usando o chart que acabou de ser incluido no Harbor
+
+```
+helm repo update
+helm lint --values ../../ambientes/dev/values.yaml
+
+helm install mip harbor-third-party/redis --values ../../ambientes/dev/values.yaml
+```
+
 
 
