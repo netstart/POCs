@@ -1,5 +1,8 @@
 package com.github.mtlsclient;
 
+import com.github.mtlsclient.httpclient.HttpClientFactory;
+import com.github.mtlsclient.httpclient.KeyStore;
+import com.github.mtlsclient.httpclient.TrustStore;
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;
 import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
@@ -54,19 +57,9 @@ public class RestTemplateConfiguration {
     }
 
     private HttpClient httpClient() throws Exception {
-        // Load our keystore and truststore containing certificates that we trust.
-        SSLContext sslcontext = SSLContexts
-                .custom()
-                .loadTrustMaterial(trustStore.getFile(), trustStorePassword.toCharArray())
-                .loadKeyMaterial(keyStore.getFile(), keyStorePassword.toCharArray(), keyPassword.toCharArray())
-                .build();
+        TrustStore tStore = new TrustStore(trustStore.getFile(), trustStorePassword.toCharArray());
+        KeyStore kStore = new KeyStore(keyStore.getFile(), keyStorePassword.toCharArray(), keyPassword.toCharArray());
 
-        SSLConnectionSocketFactory sslConnectionSocketFactory =
-                new SSLConnectionSocketFactory(sslcontext, new NoopHostnameVerifier());
-
-        return HttpClients
-                .custom()
-                .setSSLSocketFactory(sslConnectionSocketFactory)
-                .build();
+        return new HttpClientFactory().createHttpClient(tStore, kStore);
     }
 }

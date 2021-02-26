@@ -1,4 +1,4 @@
-package com.github.mtlsclient;
+package com.github.mtlsclient.httpclient;
 
 import java.io.File;
 
