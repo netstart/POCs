@@ -1,7 +1,7 @@
 package com.github.mtlsclient.config;
 
 import com.github.mtlsclient.httpclient.HttpClientFactory;
-import com.github.mtlsclient.httpclient.interceptor.RequestLogHttpRequestInterceptor;
+import com.github.mtlsclient.interceptor.RequestLogHttpRequestInterceptor;
 import com.github.mtlsclient.httpclient.properties.HttpClientProperties;
 import com.github.mtlsclient.httpclient.properties.KeyStore;
 import com.github.mtlsclient.httpclient.properties.MaxConnection;

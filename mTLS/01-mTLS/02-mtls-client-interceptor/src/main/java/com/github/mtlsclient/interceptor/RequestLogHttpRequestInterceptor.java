@@ -1,4 +1,4 @@
-package com.github.mtlsclient.httpclient.interceptor;
+package com.github.mtlsclient.interceptor;
 
 import org.apache.http.HttpException;
 import org.apache.http.HttpRequest;
