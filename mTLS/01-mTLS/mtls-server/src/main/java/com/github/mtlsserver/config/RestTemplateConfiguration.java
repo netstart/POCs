@@ -1,4 +1,4 @@
-package com.github.mtlsserver;
+package com.github.mtlsserver.config;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.conn.ssl.NoopHostnameVerifier;

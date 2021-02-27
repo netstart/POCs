@@ -11,7 +11,7 @@
 	</parent>
 
 	<groupId>com.github</groupId>
-	<artifactId>02-mtls-client-interceptor</artifactId>
+	<artifactId>03-mtls-client-max-connection</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>

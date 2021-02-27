@@ -1,8 +1,11 @@
-package com.github.mtlsclient;
+package com.github.mtlsclient.config;
 
 import com.github.mtlsclient.httpclient.HttpClientFactory;
-import com.github.mtlsclient.httpclient.KeyStore;
-import com.github.mtlsclient.httpclient.TrustStore;
+import com.github.mtlsclient.httpclient.interceptor.RequestLogHttpRequestInterceptor;
+import com.github.mtlsclient.httpclient.properties.HttpClientProperties;
+import com.github.mtlsclient.httpclient.properties.KeyStore;
+import com.github.mtlsclient.httpclient.properties.MaxConnection;
+import com.github.mtlsclient.httpclient.properties.TrustStore;
 import org.apache.http.client.HttpClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -13,6 +16,8 @@ import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.DefaultResponseErrorHandler;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.List;
 
 @Configuration
 public class RestTemplateConfiguration {
@@ -51,9 +56,14 @@ public class RestTemplateConfiguration {
     }
 
     private HttpClient httpClient() throws Exception {
-        TrustStore tStore = new TrustStore(trustStore.getFile(), trustStorePassword.toCharArray());
-        KeyStore kStore = new KeyStore(keyStore.getFile(), keyStorePassword.toCharArray(), keyPassword.toCharArray());
+        HttpClientProperties properties = new HttpClientProperties();
+        properties.maxConnection = new MaxConnection();
 
-        return new HttpClientFactory().createHttpClient(tStore, kStore);
+        properties.trustStore = new TrustStore(trustStore.getFile(), trustStorePassword.toCharArray());
+        properties.keyStore = new KeyStore(keyStore.getFile(), keyStorePassword.toCharArray(), keyPassword.toCharArray());
+
+        properties.interceptors = List.of(new RequestLogHttpRequestInterceptor());
+
+        return new HttpClientFactory().createHttpClient(properties);
     }
 }

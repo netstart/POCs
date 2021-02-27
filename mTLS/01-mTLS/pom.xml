@@ -21,6 +21,7 @@
         <module>mtls-client</module>
         <module>mtls-server</module>
         <module>02-mtls-client-interceptor</module>
+        <module>03-mtls-client-max-connection</module>
     </modules>
 
     <properties>

@@ -5,11 +5,11 @@ mvn clean package -DskipTests
 ### Features surported
 
 - [x] mTLS
-- [ ] Interceptors - HttpRequestInterceptor
+- [x] Interceptors - HttpRequestInterceptor
 - [ ] Connection pool
-    - [ ] Max connection total
-    - [ ] Max connection per route
-    - [ ] Timeout
+- [ ] Max connection total
+- [ ] Max connection per route
+- [ ] Timeout
 - [ ] Reload trust store and key store on the fly
 - [ ] Retry DefaultHttpRequestRetryHandler
     - [ ] Retry Service Unavaiable

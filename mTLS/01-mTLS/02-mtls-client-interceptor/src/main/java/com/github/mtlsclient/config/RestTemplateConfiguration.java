@@ -1,4 +1,4 @@
-package com.github.mtlsclient;
+package com.github.mtlsclient.config;
 
 import com.github.mtlsclient.httpclient.HttpClientFactory;
 import com.github.mtlsclient.httpclient.interceptor.RequestLogHttpRequestInterceptor;

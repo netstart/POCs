@@ -25,24 +25,31 @@ public class HttpClientFactory {
             throws KeyManagementException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException,
             CertificateException, IOException {
 
-        HttpClientBuilder httpClientBuilder = HttpClients.custom();
-        addSoSSLSocketFactory(httpClientBuilder, properties);
-        addInterceptors(httpClientBuilder, properties);
+        HttpClientBuilder builder = HttpClients.custom();
+        addSoSSLSocketFactory(builder, properties);
+        addInterceptors(builder, properties);
+        addMaxConnection(builder, properties);
 
-        return httpClientBuilder.build();
+        return builder.build();
     }
 
-    private HttpClientBuilder addSoSSLSocketFactory(HttpClientBuilder httpClientBuilder, HttpClientProperties properties)
+    private HttpClientBuilder addSoSSLSocketFactory(HttpClientBuilder builder, HttpClientProperties properties)
             throws KeyManagementException, UnrecoverableKeyException, NoSuchAlgorithmException, KeyStoreException, CertificateException, IOException {
-        return httpClientBuilder.setSSLSocketFactory(
+        return builder.setSSLSocketFactory(
                 SSLConnectionSocketFactoryInstance.getInstance(properties.trustStore, properties.keyStore)
         );
     }
 
-    private void addInterceptors(HttpClientBuilder httpClientBuilder, HttpClientProperties properties) {
+    private void addInterceptors(HttpClientBuilder builder, HttpClientProperties properties) {
         if (properties.interceptors != null) {
             for (HttpRequestInterceptor interceptor : properties.interceptors)
-                httpClientBuilder.addInterceptorLast(interceptor);
+                builder.addInterceptorLast(interceptor);
         }
     }
+
+    private void addMaxConnection(HttpClientBuilder builder, HttpClientProperties properties) {
+        builder.setMaxConnTotal(properties.maxConnection.maxConnTotal);
+        builder.setMaxConnPerRoute(properties.maxConnection.maxConnPerRoute);
+    }
 }
+

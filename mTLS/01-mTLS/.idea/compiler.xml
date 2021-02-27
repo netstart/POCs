@@ -8,12 +8,14 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="02-mtls-client-interceptor" />
-        <module name="mtls-server" />
         <module name="mtls-client" />
+        <module name="mtls-server" />
+        <module name="03-mtls-client-max-connection" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="02-mtls-client-interceptor" target="15" />
+      <module name="03-mtls-client-max-connection" target="15" />
       <module name="mtls" target="15" />
       <module name="mtls-client" target="15" />
       <module name="mtls-server" target="15" />
@@ -23,6 +25,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="02-mtls-client-interceptor" options="-parameters" />
+      <module name="03-mtls-client-max-connection" options="-parameters" />
       <module name="mtls-client" options="-parameters" />
       <module name="mtls-server" options="-parameters" />
     </option>

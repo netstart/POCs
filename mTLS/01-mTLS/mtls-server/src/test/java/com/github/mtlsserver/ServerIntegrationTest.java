@@ -26,6 +26,7 @@ public class ServerIntegrationTest {
     public void testGet() {
         ResponseEntity<String> getResponse = restTemplate.getForEntity(serverUrl, String.class);
         assertEquals(HttpStatus.OK, getResponse.getStatusCode());
-
+        assertEquals("Client successfully called!", getResponse.getBody());
+        System.out.println(getResponse.getBody());
     }
 }
