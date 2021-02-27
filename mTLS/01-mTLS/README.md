@@ -7,8 +7,9 @@ mvn clean package -DskipTests
 - [x] mTLS
 - [x] Interceptors - HttpRequestInterceptor
 - [ ] Connection pool
-- [ ] Max connection total
-- [ ] Max connection per route
+- [x] Max connection total
+- [x] Max connection per route
+- [x] Gzip disable
 - [ ] Timeout
 - [ ] Reload trust store and key store on the fly
 - [ ] Retry DefaultHttpRequestRetryHandler

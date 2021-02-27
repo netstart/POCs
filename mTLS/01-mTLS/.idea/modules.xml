@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/02-mtls-client-interceptor/02-mtls-client-interceptor.iml" filepath="$PROJECT_DIR$/02-mtls-client-interceptor/02-mtls-client-interceptor.iml" />
       <module fileurl="file://$PROJECT_DIR$/03-mtls-client-max-connection/03-mtls-client-max-connection.iml" filepath="$PROJECT_DIR$/03-mtls-client-max-connection/03-mtls-client-max-connection.iml" />
+      <module fileurl="file://$PROJECT_DIR$/04-mtls-client-gzip-disable/04-mtls-client-gzip-disable.iml" filepath="$PROJECT_DIR$/04-mtls-client-gzip-disable/04-mtls-client-gzip-disable.iml" />
       <module fileurl="file://$PROJECT_DIR$/mtls.iml" filepath="$PROJECT_DIR$/mtls.iml" />
       <module fileurl="file://$PROJECT_DIR$/mtls-client/mtls-client.iml" filepath="$PROJECT_DIR$/mtls-client/mtls-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/mtls-server/mtls-server.iml" filepath="$PROJECT_DIR$/mtls-server/mtls-server.iml" />

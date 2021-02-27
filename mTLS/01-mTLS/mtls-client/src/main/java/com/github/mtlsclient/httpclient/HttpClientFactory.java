@@ -31,8 +31,7 @@ public class HttpClientFactory {
     CertificateException, IOException {
 
  // @formatter:off
-    return HttpClients
-      .custom()
+    return HttpClients.custom()
       .setSSLSocketFactory(sslConnectionSocketFactory(createSSLContext(trustStore,  keyStore)))
       .build();
     // @formatter:on

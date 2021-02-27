@@ -33,8 +33,7 @@ public class SSLConnectionSocketFactoryInstance {
             CertificateException, IOException {
         // Load our keystore and truststore containing certificates that we trust.
         // @formatter:off
-        return SSLContexts
-                .custom()
+        return SSLContexts.custom()
                 .loadTrustMaterial(trustStore.getTrustStore(), trustStore.getTrustStorePassword())
                 .loadKeyMaterial(keyStore.getKeyStore(), keyStore.getKeyStorePassword(), keyStore.getKeyPassword())
                 .build();

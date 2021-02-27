@@ -53,8 +53,6 @@ Umtls-server/src/main/java/com/github/mtlsserver/config/RestTemplateConfiguratio
 d02-mtls-client-interceptor/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,5/1/5137f1379ca1900a38c2e4be61225bb5a6ac6d7a
 ‰
 Y02-mtls-client-interceptor/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,d/e/de9461eab73538d01469476dc1068b2c19651be9
-«
-{02-mtls-client-interceptor/src/main/java/com/github/mtlsclient/httpclient/interceptor/RequestLogHttpRequestInterceptor.java,6/e/6ea237ff510d6bb0bd7b20a5a4c18afd1a530646
 —
 g03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,7/d/7d96e817de7c08e423de8d6740ac388b2ddb9a9e
 U
@@ -65,7 +63,21 @@ U
 j03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/httpclient/properties/MaxConnection.java,3/2/32d54293b1bd98709a8b6a7cd90d56b8cf52dd32
 ¡
 q03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,f/f/fff2cb3264450c83309b5b634695c138f0be2265
-®
-~03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/httpclient/interceptor/RequestLogHttpRequestInterceptor.java,f/4/f4ef238c42f178bbb4655cdd7de2beda67173ec5
 “
 c03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,e/7/e729d98588b95315135b1c631d3a1be010864193
+ 
+p02-mtls-client-interceptor/src/main/java/com/github/mtlsclient/interceptor/RequestLogHttpRequestInterceptor.java,f/b/fbd0233f7d50189cee54684c9aa1c86f4a275ef0
+£
+s03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/interceptor/RequestLogHttpRequestInterceptor.java,0/7/073f030b458b57cc7e0c32d0677a5f3fe292ce8a
+Œ
+\03-mtls-client-max-connection/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,8/9/89392840d2a9f4ff8cbbd47337d7715b6d0424bc
+¤
+t03-mtls-client-max-connection/src/main/java/com/github/mtlsclient/httpclient/SSLConnectionSocketFactoryInstance.java,9/d/9dfcba49d7d4e9c99a0a8fe6415fc38cad80d088
+•
+e04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,8/b/8b085633bcaffab5e1f2d519efc62230b135a6e9
+S
+#04-mtls-client-gzip-disable/pom.xml,6/2/620c13bd4b10bb86715ab18891319d77145b7b1d
+Ÿ
+o04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,d/0/d0ef16cb7819ce05ced6c52d18d6eae74f86b174
+‘
+a04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,1/d/1db8cc15d99ac2ba6ced88c8d52a488e1db59608
