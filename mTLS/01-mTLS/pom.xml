@@ -20,6 +20,7 @@
     <modules>
         <module>mtls-client</module>
         <module>mtls-server</module>
+        <module>02-mtls-client-interceptor</module>
     </modules>
 
     <properties>
