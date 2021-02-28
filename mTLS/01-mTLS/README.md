@@ -30,27 +30,25 @@ mvn clean package -DskipTests
   In this example we set it to 'need' as we want to assure two-way SSL is established.
   The server’s truststore and the corresponding password are also configured so that the public certificate of the client is trusted.
 
-#### Spring properties:
-- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#server.ssl.ciphers
-
-
 
 ### Referênces:
-
-
 - https://github.com/joutwate/mtls-springboot
-  
+
 - https://codenotfound.com/spring-ws-mutual-authentication-example.html
 - https://dzone.com/articles/hakky54mutual-tls-1
-- https://livebook.manning.com/book/microservices-security-in-action/chapter-6/v-3/1
 - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
 
-SSL
+#### Make SSL certification
 - https://www.opencodez.com/java/implement-2-way-authentication-using-ssl.htm
+- https://dzone.com/articles/hakky54mutual-tls-1
+- https://medium.com/@niral22/2-way-ssl-with-spring-boot-microservices-2c97c974e83
+- https://livebook.manning.com/book/microservices-security-in-action/chapter-6/v-3/18
+- https://codenotfound.com/spring-ws-mutual-authentication-example.html
 
-Spring
+#### Spring
 - https://medium.com/tech-grupozap/pensando-melhor-sobre-conex%C3%B5es-http-e7105ccf8b56
 - https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
 
-
+#### Spring properties:
+- https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#server.ssl.ciphers
 
