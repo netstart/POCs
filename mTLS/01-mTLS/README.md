@@ -9,6 +9,7 @@ mvn clean package -DskipTests
 - [x] Interceptors - HttpRequestInterceptor
 - [x] Spring RestTemplate interceptor to log request and response
 - [ ] Connection pool
+- [ ] Housekeeping connection pool - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
 - [x] Max connection total
 - [x] Max connection per route
 - [x] Connection time to live
@@ -17,7 +18,7 @@ mvn clean package -DskipTests
 - [ ] Reload trust store and key store on the fly
 - [x] Retry using Http Apache class DefaultHttpRequestRetryHandler
 - [x] Retry Service Unavailable using DefaultServiceUnavailableRetryStrategy
-    - [ ] Retry Service Unavaiable
+- [ ] @Retry or @Recover - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
 
 
 ### Properies
