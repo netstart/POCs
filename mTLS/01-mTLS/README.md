@@ -7,6 +7,7 @@ mvn clean package -DskipTests
 
 - [x] mTLS
 - [x] Interceptors - HttpRequestInterceptor
+- [x] Spring RestTemplate interceptor to log request and response
 - [ ] Connection pool
 - [x] Max connection total
 - [x] Max connection per route
