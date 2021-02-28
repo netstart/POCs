@@ -81,3 +81,25 @@ S
 o04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,d/0/d0ef16cb7819ce05ced6c52d18d6eae74f86b174
 ‘
 a04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,1/d/1db8cc15d99ac2ba6ced88c8d52a488e1db59608
+Š
+Z04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/MtlsClientApplication.java,b/6/b62dabb6ebb8dfeec64619e1caec1c0fea34a064
+Š
+Z04-mtls-client-gzip-disable/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,b/d/bd43895e0117fe0924f07347e45ecb905f5824d9
+ 
+p05-mtls-client-connection-time-to-live/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,a/b/ab738aa141075dc6d2581d2d392cb6b0f10b7927
+^
+.05-mtls-client-connection-time-to-live/pom.xml,0/7/074e0260406e68336aff40bc1d99680877c380ed
+ª
+z05-mtls-client-connection-time-to-live/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,7/0/7016acda39dc7559dabeb231b2001345047067fe
+ª
+z05-mtls-client-connection-time-to-live/src/main/java/com/github/mtlsclient/httpclient/properties/ConnectionTimeToLive.java,f/a/fa66c7077f02fc0e450e07b3fa8464cce1edd829
+œ
+l05-mtls-client-connection-time-to-live/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,e/c/ec26a327d3e9307437d667a780352b36011ccaaf
+£
+s05-mtls-client-connection-time-to-live/src/main/java/com/github/mtlsclient/httpclient/properties/MaxConnection.java,b/3/b38a692c418ce5e2e529330161c64b477ce94a14
+•
+e05-mtls-client-connection-time-to-live/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,1/6/16e3c1244de72d4a0d69e3511d5c30c2a8d257e9
+L
+06-mtls-client-retry/pom.xml,c/a/ca0faaeb0918f45d94118955e65f3c6dccac0cbb
+Ž
+^06-mtls-client-retry/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,1/6/163838e956a47e6a3ad54ac926bec6f2b4c3e595

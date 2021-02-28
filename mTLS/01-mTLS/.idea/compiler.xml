@@ -9,15 +9,19 @@
         <outputRelativeToContentRoot value="true" />
         <module name="02-mtls-client-interceptor" />
         <module name="mtls-client" />
-        <module name="04-mtls-client-gzip-disable" />
         <module name="mtls-server" />
+        <module name="05-mtls-client-connection-time-to-live" />
         <module name="03-mtls-client-max-connection" />
+        <module name="06-mtls-client-retry" />
+        <module name="04-mtls-client-gzip-disable" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="02-mtls-client-interceptor" target="15" />
       <module name="03-mtls-client-max-connection" target="15" />
       <module name="04-mtls-client-gzip-disable" target="15" />
+      <module name="05-mtls-client-connection-time-to-live" target="15" />
+      <module name="06-mtls-client-retry" target="15" />
       <module name="mtls" target="15" />
       <module name="mtls-client" target="15" />
       <module name="mtls-server" target="15" />
@@ -29,6 +33,8 @@
       <module name="02-mtls-client-interceptor" options="-parameters" />
       <module name="03-mtls-client-max-connection" options="-parameters" />
       <module name="04-mtls-client-gzip-disable" options="-parameters" />
+      <module name="05-mtls-client-connection-time-to-live" options="-parameters" />
+      <module name="06-mtls-client-retry" options="-parameters" />
       <module name="mtls-client" options="-parameters" />
       <module name="mtls-server" options="-parameters" />
     </option>
