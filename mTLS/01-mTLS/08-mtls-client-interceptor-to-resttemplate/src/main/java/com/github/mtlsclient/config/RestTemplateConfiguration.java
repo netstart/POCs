@@ -49,6 +49,8 @@ public class RestTemplateConfiguration {
                         return false;
                     }
                 });
+
+        //        restTemplate.setInterceptors(asList(new BasicAuthorizationInterceptor("user", "password")));
         restTemplate.setInterceptors(List.of(logInterceptor()));
 
         return restTemplate;
