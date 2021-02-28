@@ -61,6 +61,8 @@ public class RestTemplateConfiguration {
                 .loadKeyMaterial(keyStore.getFile(), keyStorePassword.toCharArray(), keyPassword.toCharArray())
                 .build();
 
+        // NoopHostnameVerifier essentially turns hostname verification off as otherwise following error
+        // is thrown: java.security.cert.CertificateException: No name matching localhost found
         SSLConnectionSocketFactory sslConnectionSocketFactory =
                 new SSLConnectionSocketFactory(sslcontext, new NoopHostnameVerifier());
 

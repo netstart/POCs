@@ -67,6 +67,8 @@ public class HttpClientFactory {
     }
 
     private void addConnectionTimeToLive(HttpClientBuilder builder, HttpClientProperties properties) {
+        // NoopHostnameVerifier essentially turns hostname verification off as otherwise following error
+        // is thrown: java.security.cert.CertificateException: No name matching localhost found
         builder.setConnectionTimeToLive(properties.connectionTimeToLive.time, properties.connectionTimeToLive.timeUnit);
     }
 

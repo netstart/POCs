@@ -25,6 +25,8 @@ public class SSLConnectionSocketFactoryInstance {
     }
 
     protected SSLConnectionSocketFactory sslConnectionSocketFactory(SSLContext sslContext) {
+        // NoopHostnameVerifier essentially turns hostname verification off as otherwise following error
+        // is thrown: java.security.cert.CertificateException: No name matching localhost found
         return new SSLConnectionSocketFactory(sslContext, new NoopHostnameVerifier());
     }
 

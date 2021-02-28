@@ -20,12 +20,20 @@ mvn clean package -DskipTests
     - [ ] Retry Service Unavaiable
     
 
-### Referênces: 
+### Referênces:
 - https://github.com/joutwate/mtls-springboot
+  
 - https://codenotfound.com/spring-ws-mutual-authentication-example.html
 - https://dzone.com/articles/hakky54mutual-tls-1
-- https://www.opencodez.com/java/implement-2-way-authentication-using-ssl.htm
 - https://livebook.manning.com/book/microservices-security-in-action/chapter-6/v-3/1
 - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
+
+SSL
+- https://www.opencodez.com/java/implement-2-way-authentication-using-ssl.htm
+
+Spring
 - https://medium.com/tech-grupozap/pensando-melhor-sobre-conex%C3%B5es-http-e7105ccf8b56
+- https://www.thomasvitale.com/https-spring-boot-ssl-certificate/
+
+
 
