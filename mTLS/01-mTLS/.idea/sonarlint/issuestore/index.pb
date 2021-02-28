@@ -103,3 +103,25 @@ L
 06-mtls-client-retry/pom.xml,c/a/ca0faaeb0918f45d94118955e65f3c6dccac0cbb
 é
 ^06-mtls-client-retry/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,1/6/163838e956a47e6a3ad54ac926bec6f2b4c3e595
+ò
+h06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/properties/ConnectionTimeToLive.java,e/4/e425c76abe50bde74e2432856517671fdbe04611
+ñ
+f06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/properties/retry/RetryDefault.java,2/1/211cbc12ccab058205eca4069cb07355460a9864
+ë
+a06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/properties/MaxConnection.java,0/2/02ff714e543ec1883b3288e49ee8c994bdb5bfca
+ò
+h06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,4/2/426f29bbb0ba1c01f30ae6cefc0dec27f20dd32b
+©
+y06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/properties/retry/RetryServiceUnavailableInterval.java,7/1/712e1e219fc89c9d2980e918dd915e77b8cbdaa9
+ê
+`07-mtls-client-timeout/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,0/6/064c0dfdd6b0b6ec389b34d20a65d1e13205cded
+ä
+Z06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,4/6/46f35d7008161cd5cdbd2eac7db25e71822f77d8
+É
+S06-mtls-client-retry/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,4/e/4eb003dd9748375a367e4ea82ca801148a70c75c
+_
+/07-mtls-client-timeout/.mvn/wrapper/wrapper.iml,f/e/fea7fe3a7b13556703832be33de018874d7d5827
+N
+07-mtls-client-timeout/pom.xml,4/5/4594d97c8a748bcaef981a44b558bc8848474e6d
+ö
+j07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,2/a/2aee0377e2e19d635bf6f2a7d44ef9de7fdfb953

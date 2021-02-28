@@ -11,7 +11,7 @@ mvn clean package -DskipTests
 - [x] Max connection per route
 - [x] Connection time to live
 - [x] Gzip disable
-- [ ] Timeout
+- [x] Timeout
 - [ ] Reload trust store and key store on the fly
 - [x] Retry using Http Apache class DefaultHttpRequestRetryHandler
 - [x] Retry Service Unavailable using DefaultServiceUnavailableRetryStrategy

@@ -25,6 +25,7 @@
         <module>04-mtls-client-gzip-disable</module>
         <module>05-mtls-client-connection-time-to-live</module>
         <module>06-mtls-client-retry</module>
+        <module>07-mtls-client-timeout</module>
     </modules>
 
     <properties>

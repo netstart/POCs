@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/04-mtls-client-gzip-disable/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/05-mtls-client-connection-time-to-live/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/06-mtls-client-retry/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/07-mtls-client-timeout/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mtls-client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mtls-server/src/main/java" charset="UTF-8" />
   </component>
