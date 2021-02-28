@@ -1,5 +1,6 @@
 ```
 mvn clean package -DskipTests
+./mvnw spring-boot:run
 ```
 
 ### Features surported

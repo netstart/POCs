@@ -26,6 +26,7 @@
         <module>05-mtls-client-connection-time-to-live</module>
         <module>06-mtls-client-retry</module>
         <module>07-mtls-client-timeout</module>
+        <module>08-mtls-client-interceptor-to-resttemplate</module>
     </modules>
 
     <properties>

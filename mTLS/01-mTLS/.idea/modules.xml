@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/05-mtls-client-connection-time-to-live/05-mtls-client-connection-time-to-live.iml" filepath="$PROJECT_DIR$/05-mtls-client-connection-time-to-live/05-mtls-client-connection-time-to-live.iml" />
       <module fileurl="file://$PROJECT_DIR$/06-mtls-client-retry/06-mtls-client-retry.iml" filepath="$PROJECT_DIR$/06-mtls-client-retry/06-mtls-client-retry.iml" />
       <module fileurl="file://$PROJECT_DIR$/07-mtls-client-timeout/07-mtls-client-timeout.iml" filepath="$PROJECT_DIR$/07-mtls-client-timeout/07-mtls-client-timeout.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08-mtls-client-interceptor-to-resttemplate/08-mtls-client-interceptor-to-resttemplate.iml" filepath="$PROJECT_DIR$/08-mtls-client-interceptor-to-resttemplate/08-mtls-client-interceptor-to-resttemplate.iml" />
       <module fileurl="file://$PROJECT_DIR$/mtls.iml" filepath="$PROJECT_DIR$/mtls.iml" />
       <module fileurl="file://$PROJECT_DIR$/mtls-client/mtls-client.iml" filepath="$PROJECT_DIR$/mtls-client/mtls-client.iml" />
       <module fileurl="file://$PROJECT_DIR$/mtls-server/mtls-server.iml" filepath="$PROJECT_DIR$/mtls-server/mtls-server.iml" />

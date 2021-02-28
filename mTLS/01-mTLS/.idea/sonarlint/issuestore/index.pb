@@ -125,3 +125,17 @@ N
 07-mtls-client-timeout/pom.xml,4/5/4594d97c8a748bcaef981a44b558bc8848474e6d
 ö
 j07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,2/a/2aee0377e2e19d635bf6f2a7d44ef9de7fdfb953
+ö
+j07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/properties/ConnectionTimeToLive.java,0/9/09b2c8a985439e63133434fdbcac14e868e74c89
+é
+^07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/properties/KeyStore.java,f/b/fb5783580a6b574baa8822c081d01f06ff1a5cbe
+å
+\07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,7/1/7160754a9a2490eb7f1b4f19f3c583fe9637b69c
+ç
+]07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/properties/Timeout.java,e/3/e313f2c3cd1be41c512a0716e9034701c54282b9
+Ö
+U07-mtls-client-timeout/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,0/8/08d9d4d22aab04bb4036d6e94c9ef4d82ae9f844
+b
+208-mtls-client-interceptor-to-resttemplate/pom.xml,2/c/2c3ddb897228becc9b72b5f691a55d299b77994c
+§
+t08-mtls-client-interceptor-to-resttemplate/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,1/a/1a745fdffdc3f02c9073bfa641707ef07f503b7d
