@@ -20,7 +20,7 @@ mvn clean package -DskipTests
 - [ ] Reload trust store and key store on the fly
 - [x] Retry using Http Apache class DefaultHttpRequestRetryHandler
 - [x] Retry Service Unavailable using DefaultServiceUnavailableRetryStrategy
-- [ ] @Retry or @Recover - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
+- [ ] Spring @Retry or @Recover - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
 
 
 ### Properies
@@ -60,6 +60,7 @@ mvn clean package -DskipTests
 Housekeeping connection pool 
   - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
   - https://github.com/dhaval201279/RESTClientDemo
+  - https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/connmgmt.html#d5e418
 ```
     /**
      * To support @Scheduled annotation in HttpClientConfig, we have to add support of scheduled
