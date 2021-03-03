@@ -2,7 +2,6 @@ logs/
 target/
 !**/src/main/**
 !**/src/test/**
-shell/
 *.log
 
 ### STS/ECLIPSE ###
