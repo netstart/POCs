@@ -10,6 +10,7 @@ mvn clean package -DskipTests
 - [x] Spring RestTemplate interceptor to log request and response
 - [x] Connection pool with PoolingHttpClientConnectionManager
 - [ ] Housekeeping connection pool - Connection eviction policy - idle And Expired Connection close
+  - https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/connmgmt.html#d5e418
 - [ ] Keep alive strategy
   - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
   - https://github.com/dhaval201279/RESTClientDemo
