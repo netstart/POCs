@@ -8,11 +8,11 @@ mvn clean package -DskipTests
 - [x] mTLS
 - [x] Interceptors - HttpRequestInterceptor
 - [x] Spring RestTemplate interceptor to log request and response
-- [ ] Connection pool
+- [x] Connection pool with PoolingHttpClientConnectionManager
 - [ ] Housekeeping connection pool - Connection eviction policy - idle And Expired Connection close
+- [ ] Keep alive strategy
   - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
   - https://github.com/dhaval201279/RESTClientDemo
-- [ ] Keep alive strategy
 - [x] Max connection total
 - [x] Max connection per route
 - [x] Connection time to live
