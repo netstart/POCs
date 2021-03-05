@@ -164,3 +164,13 @@ V
 &09-mtls-client-connection-pool/pom.xml,0/4/044ded9f7d534808e528a30fa8a63314aaf53bb5
 î
 d09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,a/8/a8b9df97c49862d2c04d2ac0d0913a3cd638a224
+õ
+k09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/httpclient/properties/MaxConnection.java,0/5/056aa96279d3737d551471eb8ba3353d7bc9c89a
+¢
+r09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/httpclient/properties/HttpClientProperties.java,d/5/d5b443c0fb17231c163da15e7f987e1246e5f3b2
+ç
+]09-mtls-client-connection-pool/src/test/java/com/github/mtlsclient/ClientIntegrationTest.java,7/9/79028f727bb6de6228088dfbba0f630c8e192a4d
+•
+u09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/httpclient/SSLConnectionSocketFactoryInstance.java,e/c/ecc4487bcce1ee0ac39ad61bcaae989fc82a02b8
+õ
+k09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/httpclient/PoolingHttpClientFactory.java,4/3/438076623974d8e4a38acc7be395f47885181d5b

@@ -19,6 +19,8 @@ public class HttpClientProperties {
     public MaxConnection maxConnection = new MaxConnection();
     public Timeout timeout = new Timeout();
     public ConnectionTimeToLive connectionTimeToLive = new ConnectionTimeToLive();
+
+    // Sets duration after which persistent connections needs to be re-validated before leasing
     public int validateAfterInactivityInMillis = 9000;
 
     public List<HttpRequestInterceptor> interceptors = new ArrayList<>();

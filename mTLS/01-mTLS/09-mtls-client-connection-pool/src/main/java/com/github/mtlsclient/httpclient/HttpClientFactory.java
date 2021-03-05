@@ -5,10 +5,7 @@ import com.github.mtlsclient.httpclient.properties.retry.RetryDefault;
 import org.apache.http.HttpRequestInterceptor;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.DefaultServiceUnavailableRetryStrategy;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.impl.client.HttpClients;
+import org.apache.http.impl.client.*;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
 import java.io.IOException;
@@ -46,6 +43,7 @@ public class HttpClientFactory {
         addRetry(builder, properties);
         addServiceUnavailableRetryStrategy(builder, properties);
         addTimeout(builder, properties);
+        builder.setUserTokenHandler(new NoopUserTokenHandler());
         return builder.build();
     }
 
