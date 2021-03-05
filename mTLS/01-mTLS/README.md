@@ -3,7 +3,7 @@ mvn clean package -DskipTests
 ./mvnw spring-boot:run
 ```
 
-### Features surported
+### Features checked
 
 - [x] mTLS
 - [x] Interceptors - HttpRequestInterceptor
@@ -25,6 +25,7 @@ mvn clean package -DskipTests
 - [x] Retry using Http Apache class DefaultHttpRequestRetryHandler
 - [x] Retry Service Unavailable using DefaultServiceUnavailableRetryStrategy
 - [ ] Spring @Retry or @Recover - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
+- [ ] HttpClient Metrics extractor
 
 
 ### Properies
