@@ -61,6 +61,22 @@ mvn clean package -DskipTests
 
 
 
+HttpClient Metrics extractor
+```
+public Runnable connectionPoolMetricsLogger(final PoolingHttpClientConnectionManager connectionManager) {
+   return new Runnable() {
+     @Override
+     @Scheduled(fixedDelay = 30000)
+     public void run() {
+       final StringBuilder buffer = new StringBuilder();
+       try {
+         if (connectionManager != null) {
+           final PoolStats totalPoolStats = connectionManager.getTotalStats();
+           log.info(" ** HTTP Client Connection Pool Stats : Available = {}, Leased = {}, Pending = {}, Max = {} **",
+
+```
+
+
 Housekeeping connection pool 
   - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
   - https://github.com/dhaval201279/RESTClientDemo
