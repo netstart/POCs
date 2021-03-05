@@ -93,8 +93,10 @@ public class HttpClientFactory {
         final int maxRetries = properties.retryServiceUnavailableInterval.maxRetries;
         final int retryInterval = properties.retryServiceUnavailableInterval.retryInterval;
 
-        // Internamente ela verifica se recebeu um status code 503 e decide até quando retentar com base nos argumentos do construtor
-        final DefaultServiceUnavailableRetryStrategy retryStrategy = new DefaultServiceUnavailableRetryStrategy(maxRetries, retryInterval);
+        // Internamente ela verifica se recebeu um status code 503 e decide até quando
+        // retentar com base nos argumentos do construtor
+        final DefaultServiceUnavailableRetryStrategy retryStrategy =
+                new DefaultServiceUnavailableRetryStrategy(maxRetries, retryInterval);
         builder.setServiceUnavailableRetryStrategy(retryStrategy);
     }
 
