@@ -23,8 +23,6 @@ x
 Hmtls-client/src/main/java/com/github/mtlsclient/httpclient/KeyStore.java,e/5/e54033fb1a9148c5cca58dd0ed05a995d0fc51a2
 F
 mtls-server/.gitignore,0/2/02c390293e78fc6ce7a43e0a75a7746bce8a1ee2
-G
-bin/gen-non-prod-key.sh,9/c/9ccce507f259e77c34542ac719fc06fb5694693c
 Å
 Qmtls-client/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,4/a/4aa25dd0a2d81afe246cdb57335110fa4764eba6
 è
@@ -155,3 +153,14 @@ k06-mtls-client-retry/src/main/java/com/github/mtlsclient/httpclient/SSLConnecti
 r04-mtls-client-gzip-disable/src/main/java/com/github/mtlsclient/httpclient/SSLConnectionSocketFactoryInstance.java,6/0/60845857e782f3a22c61ef8f0735a5f9d81ebc75
 ù
 m07-mtls-client-timeout/src/main/java/com/github/mtlsclient/httpclient/SSLConnectionSocketFactoryInstance.java,d/9/d9d220cc811a436f1a6d840aa1dd8858d777cbbc
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+I
+shell/gen-non-prod-key.sh,c/a/ca291c8f05122ab2a09fa3bb31758d896b61abe2
+ò
+h09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/config/RestTemplateConfiguration.java,0/b/0b81375d24c532db5d7bb1c2af2384591ec2001e
+V
+&09-mtls-client-connection-pool/pom.xml,0/4/044ded9f7d534808e528a30fa8a63314aaf53bb5
+î
+d09-mtls-client-connection-pool/src/main/java/com/github/mtlsclient/httpclient/HttpClientFactory.java,a/8/a8b9df97c49862d2c04d2ac0d0913a3cd638a224

@@ -9,9 +9,10 @@ mvn clean package -DskipTests
 - [x] Interceptors - HttpRequestInterceptor
 - [x] Spring RestTemplate interceptor to log request and response
 - [ ] Connection pool
-- [ ] Housekeeping connection pool 
+- [ ] Housekeeping connection pool - Connection eviction policy - idle And Expired Connection close
   - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
   - https://github.com/dhaval201279/RESTClientDemo
+- [ ] Keep alive strategy
 - [x] Max connection total
 - [x] Max connection per route
 - [x] Connection time to live
@@ -78,20 +79,6 @@ Housekeeping connection pool
         return scheduler;
     }
     
-    @Bean
-    public PoolingHttpClientConnectionManager poolingConnectionManager() {
-
-        PoolingHttpClientConnectionManager poolingConnectionManager =
-            new PoolingHttpClientConnectionManager(getConnectionSocketFactoryRegistry());
-        poolingConnectionManager.setMaxTotal(MAX_CONNECTIONS);
-        poolingConnectionManager.setDefaultMaxPerRoute(MAX_PER_ROUTE_CONNECTION);
-        poolingConnectionManager.setValidateAfterInactivity(VALIDATE_AFTER_INACTIVITY_IN_MILLIS);
-        log.info("Connection pool instantiated with max connections = {}, max per route connections = {}," +
-                "validate after inactivity in millis = {}", MAX_CONNECTIONS, MAX_PER_ROUTE_CONNECTION,
-                VALIDATE_AFTER_INACTIVITY_IN_MILLIS);
-        return poolingConnectionManager;
-    }
-     
      /**
      * a dedicated monitor thread used to evict connections that are considered expired due to a long
      * period of inactivity. The monitor thread can periodically call
@@ -168,6 +155,34 @@ Housekeeping connection pool
                     log.error("Exception occurred whilst logging http connection pool stats. msg = {}, e = {}", e.getMessage(), e);
                 }
                 log.info("Leaving connectionPoolMetricsLogger");
+            }
+        };
+    }
+    
+    
+    
+    /**
+     *  If the Keep-Alive header is not present in the response, HttpClient assumes the connection can be
+     *  kept alive indefinitely. However, many HTTP servers in general use are configured to drop
+     *  persistent connections after a certain period of inactivity in order to conserve system
+     *  resources, quite often without informing the client. In case the default strategy turns out
+     *  to be too optimistic, one may want to provide a custom keep-alive strategy.
+     *
+     * */
+    private ConnectionKeepAliveStrategy connectionKeepAliveStrategy() {
+        return new DefaultConnectionKeepAliveStrategy() {
+            @Override
+            public long getKeepAliveDuration(final HttpResponse response, final HttpContext context) {
+                log.info("Instantiating DefaultConnectionKeepAliveStrategy by determining keep alive time ");
+                long keepAliveDuration = super.getKeepAliveDuration(response, context);
+
+                if (keepAliveDuration < 0) {
+                    keepAliveDuration = DEFAULT_KEEP_ALIVE_TIME_MILLIS;
+                } else if (keepAliveDuration > MAX_KEEP_ALIVE_TIME_MILLIS) {
+                    keepAliveDuration = MAX_KEEP_ALIVE_TIME_MILLIS;
+                }
+                log.info("Keep alive duration = {} ", keepAliveDuration);
+                return keepAliveDuration;
             }
         };
     }

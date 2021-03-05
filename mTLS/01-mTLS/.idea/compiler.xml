@@ -12,6 +12,7 @@
         <module name="mtls-client" />
         <module name="mtls-server" />
         <module name="05-mtls-client-connection-time-to-live" />
+        <module name="09-mtls-client-connection-pool" />
         <module name="03-mtls-client-max-connection" />
         <module name="06-mtls-client-retry" />
         <module name="07-mtls-client-timeout" />
@@ -26,6 +27,7 @@
       <module name="06-mtls-client-retry" target="15" />
       <module name="07-mtls-client-timeout" target="15" />
       <module name="08-mtls-client-interceptor-to-resttemplate" target="15" />
+      <module name="09-mtls-client-connection-pool" target="15" />
       <module name="mtls" target="15" />
       <module name="mtls-client" target="15" />
       <module name="mtls-server" target="15" />
@@ -41,6 +43,7 @@
       <module name="06-mtls-client-retry" options="-parameters" />
       <module name="07-mtls-client-timeout" options="-parameters" />
       <module name="08-mtls-client-interceptor-to-resttemplate" options="-parameters" />
+      <module name="09-mtls-client-connection-pool" options="-parameters" />
       <module name="mtls-client" options="-parameters" />
       <module name="mtls-server" options="-parameters" />
     </option>
