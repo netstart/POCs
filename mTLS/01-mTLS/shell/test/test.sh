@@ -29,5 +29,5 @@ keytool -importcert -alias MyServer -keystore MyClient.jks -file MyServer.cer -s
 printf "${SEPARATOR}Add client certificate to server truststore\n"
 keytool -importcert -alias MyClient -keystore MyServer.jks -file MyClientPublic.cer -storepass password -noprompt
 
-printf "${SEPARATOR}Delete a certificate from MyClient.jks. Password is from Server or Client?\n"
+printf "${SEPARATOR}Delete a certificate from MyClient.jks. Is Password from Server or Client?\n"
 keytool -delete -alias MyClient -keystore MyClient.jks -storepass password
