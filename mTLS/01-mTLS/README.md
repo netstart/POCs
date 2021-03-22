@@ -12,7 +12,7 @@ mvn clean package -DskipTests
 - [ ] Housekeeping connection pool - Connection eviction policy - idle And Expired Connection close
   - https://hc.apache.org/httpcomponents-client-4.5.x/current/tutorial/html/connmgmt.html#d5e418
   - Maybe its not necessary, see IdleConnectionEvictor
-  - We can configure housekeeping using `HttpClientBuilder.evictExpiredConnections()` or `HttpClientBuilder.evictIdleConnections(final long maxIdleTime, final TimeUnit maxIdleTimeUnit)`
+  - We can configure housekeeping using `HttpClientBuilder.evictExpiredConnections()` or `HttpClientBuilder.evictIdleConnections(final long maxIdleTime, final TimeUnit maxIdleTimeUnit)`. See HttpClientBuilder line 1221
 - [ ] Keep alive strategy
   - https://www.dhaval-shah.com/rest-client-with-desired-nfrs-using-springs-resttemplate/
   - https://github.com/dhaval201279/RESTClientDemo
