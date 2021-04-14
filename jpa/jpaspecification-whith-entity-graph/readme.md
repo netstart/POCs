@@ -26,7 +26,7 @@ Implementando abstração pra conter mais métodos/possibilidades de utilizar sp
 
 ### 05-specification-entity-graph
 
-Utilizando JpaRepository pra utilizar JPA Specification com Entity Query, veja:
+Utilizando JpaRepository pra utilizar JPA Specification com Entity Query usando a anotation @EntityGraph e passando uma specification customizada, não gerada pelo Spring, veja:
 `CharacteristicsRepository.findAll(Specification<Characteristic> specification, Pageable pageable)`
 `CharacteristicsJpaSpecificationTest`
 
