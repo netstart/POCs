@@ -1,0 +1,75 @@
+server:
+  port: 8180
+
+# https://resilience4j.readme.io/docs/getting-started-3
+# Spring Boot Actuator health information can be used to check the status of your running application.
+# It is often used by monitoring software to alert someone if a production system has serious issues.
+
+# By default the CircuitBreaker or RateLimiter health indicators are disabled, but you can enable them via the configuration. 
+# Health Indicators are disabled, because the application status is DOWN, when a CircuitBreaker is OPEN. 
+# This might not be what you want to achieve.
+management.health.circuitbreakers.enabled: true
+management.health.ratelimiters.enabled: true
+
+resilience4j.bulkhead:
+  instances:
+    holidayClient:
+      # Max amount of time a thread should be blocked
+      # when attempting to enter a saturated bulkhead.
+      maxWaitDuration: 100ms
+      # Max amount of parallel executions allowed by the bulkhead.
+      maxConcurrentCalls: 10
+
+resilience4j.ratelimiter:
+  instances:
+    holidayClient:
+      # The number of permissions available during one limit refresh period.
+      limitForPeriod: 10
+      # After each period, the rate limiter sets its permissions count
+      # back to the limitForPeriod value.
+      limitRefreshPeriod: 1s
+      # The default wait time a thread waits for a permission.
+      timeoutDuration: 500ms
+
+resilience4j.retry:
+  instances:
+    holidayClient:
+      # The maximum number of retry attempt
+      maxRetryAttempts: 3
+      # Initial interval between retry attempts
+      waitDuration: 1s
+      # Use exponential backoff strategy
+      enableExponentialBackoff: true
+      # Multiplier for the exponential backoff
+      # Delay between retry attempts = waitDuration * exponentialBackoffMultiplier
+      exponentialBackoffMultiplier: 2
+      
+
+# See default values in https://resilience4j.readme.io/docs/circuitbreaker
+resilience4j.circuitbreaker:
+  configs:
+    default:
+      registerHealthIndicator: true
+      ringBufferSizeInClosedState: 4
+      ringBufferSizeInHalfOpenState: 2
+      automaticTransitionFromOpenToHalfOpenEnabled: true
+      waitDurationInOpenState: 20s
+      failureRateThreshold: 50
+      eventConsumerBufferSize: 10
+      ignoreExceptions:
+       - com.resilience4j.exception.BusinessException
+       - com.github.example.MyException
+      recordExceptions:
+        - java.net.SocketTimeoutException
+        - java.net.ConnectException
+  instances:
+    holidayClient:
+      baseConfig: default
+      ringBufferSizeInClosedState: 4
+      registerHealthIndicator: true
+      ignoreExceptions:
+        # We need to ignore 4xx errors returned by the server as they are valid business case.
+        - org.springframework.web.client.HttpClientErrorException
+      recordExceptions:
+        # We need to record all http errors
+        - org.springframework.web.client.RestClientException
