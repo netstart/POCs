@@ -9,7 +9,6 @@ import org.springframework.test.context.jdbc.Sql;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-//@RunWith(SpringRunner.class)
 @Sql(scripts = "/entitygraph-data.sql")
 public class CharacteristicTest {
 

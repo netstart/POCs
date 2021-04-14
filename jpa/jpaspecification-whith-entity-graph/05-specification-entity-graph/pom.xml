@@ -5,9 +5,9 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com</groupId>
-	<artifactId>04-specification-entity-graph</artifactId>
+	<artifactId>05-specification-entity-graph</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>04 specification entity graph</name>
+	<name>05 specification entity graph</name>
 
 	<parent>
 		<groupId>com</groupId>
