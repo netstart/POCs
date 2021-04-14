@@ -18,3 +18,11 @@ Teste `CharacteristicsJpaSpecificationTest` utilizando os métodos retirados de 
 
 Usando SimpleJpaRepository pra implementar a consulta, veja as classes `CharacteristicsJpaSpecificationRepository`, `MyRepositoryConfiguration` e `CharacteristicsJpaSpecificationRepositoryTest`
 
+### 04-specification-entity-graph
+
+Implementando abstração pra conter mais métodos/possibilidades de utilizar specification com entity graph, veja
+`CharacteristicsJpaSpecificationRepository`, `CustomRepositoryImpl` e `CharacteristicsJpaSpecificationRepositoryTest`
+
+
+###
+
