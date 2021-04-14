@@ -10,7 +10,7 @@ import org.springframework.data.repository.NoRepositoryBean;
 import javax.persistence.EntityManager;
 
 @NoRepositoryBean
-public class CharacteristicsJpaSpecificationRepository extends CustomRepositoryImpl<Characteristic, Long> {
+public class CharacteristicsJpaSpecificationRepository extends JpaSpecificationEntityGraphRepositoryImpl<Characteristic, Long> {
 
     public CharacteristicsJpaSpecificationRepository(Class<Characteristic> domainClass, EntityManager em) {
         super(domainClass, em);

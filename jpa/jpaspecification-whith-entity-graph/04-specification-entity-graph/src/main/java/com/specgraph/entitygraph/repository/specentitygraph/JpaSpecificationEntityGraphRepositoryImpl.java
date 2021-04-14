@@ -15,13 +15,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 @NoRepositoryBean
-public class CustomRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
-    implements CustomRepository<T, ID> {
+public class JpaSpecificationEntityGraphRepositoryImpl<T, ID extends Serializable> extends SimpleJpaRepository<T, ID>
+    implements JpaSpecificationEntityGraphRepository<T, ID> {
 
     private EntityManager em;
     private Class<T> domainClass;
 
-    public CustomRepositoryImpl(Class<T> domainClass, EntityManager em) {
+    public JpaSpecificationEntityGraphRepositoryImpl(Class<T> domainClass, EntityManager em) {
         super(domainClass, em);
         this.domainClass = domainClass;
         this.em = em;

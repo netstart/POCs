@@ -21,7 +21,7 @@ Usando SimpleJpaRepository pra implementar a consulta, veja as classes `Characte
 ### 04-specification-entity-graph
 
 Implementando abstração pra conter mais métodos/possibilidades de utilizar specification com entity graph, veja
-`CharacteristicsJpaSpecificationRepository`, `CustomRepositoryImpl` e `CharacteristicsJpaSpecificationRepositoryTest`
+`CharacteristicsJpaSpecificationRepository`, `JpaSpecificationEntityGraphRepositoryImpl` e `CharacteristicsJpaSpecificationRepositoryTest`
 
 
 ###

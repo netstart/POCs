@@ -13,7 +13,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @NoRepositoryBean
-public interface CustomRepository<T, ID extends Serializable>
+public interface JpaSpecificationEntityGraphRepository<T, ID extends Serializable>
     extends JpaRepository<T, ID>, JpaSpecificationExecutor<T> {
 
     List<T> findAll(Specification<T> spec, EntityGraphType entityGraphType, String entityGraphName);
