@@ -24,6 +24,8 @@
         <module>03-specification-entity-graph</module>
         <module>04-specification-entity-graph</module>
         <module>05-specification-entity-graph</module>
+        <module>06-specification-entity-graph</module>
+        <module>07-specification-entity-graph</module>
     </modules>
 
     <properties>

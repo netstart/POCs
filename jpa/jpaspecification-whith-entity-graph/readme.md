@@ -30,6 +30,17 @@ Utilizando JpaRepository pra utilizar JPA Specification com Entity Query usando 
 `CharacteristicsRepository.findAll(Specification<Characteristic> specification, Pageable pageable)`
 `CharacteristicsJpaSpecificationTest`
 
+### 06-specification-entity-graph
+
+Não utiliza specification, utiliza apenas `EntityGraph` através do `EntityManager` e da annotation `@NamedEntityGraph` que está na classe `Post`
+
+Exemplo mais complexo, com auto relacionamento, ou relacionamentos que poderiam causar um Memory Overflow por ter referência ciclica entre as entidades.
+
+Utiliza EntityManager no repository `PostRepository` para implementar várias consultas, incluindo defindo os atributos que devem ser retornados em cada consulta. 
+
+
+### 07-specification-entity-graph
+Em desenvolvimento...
 
 
 ### References:
@@ -38,6 +49,13 @@ Utilizando JpaRepository pra utilizar JPA Specification com Entity Query usando 
 - https://github.com/eugenp/tutorials/tree/master/persistence-modules/spring-data-jpa-query
 - https://www.baeldung.com/jpa-entity-graph
 - https://github1s.com/eugenp/tutorials/blob/HEAD/persistence-modules/java-jpa/src/main/java/com/baeldung/jpa/entitygraph/MainApp.java
+
+- https://jeddict.github.io/page.html?l=tutorial/NamedEntityGraph
+- https://javaee.github.io/tutorial/persistence-entitygraphs002.html
+
+@EntityView
+- https://qastack.com.br/programming/61254061/jpa-inheritance-entitygraph-include-optional-associations-of-subclasses
+
 - https://stackoverflow.com/questions/26291143/spring-data-jpa-jpaspecificationexecutor-entitygraph/67099691#67099691
 
 
@@ -50,6 +68,16 @@ One catch here is that if the defined fetch strategy is EAGER, then we cannot ch
 
 
 
+Alternativa forçando fetch (inner join) no specification
 
+```
+Specification<TransactionEventEntity> transactionFetch = (root, query, builder) -> {
+            if (Long.class != query.getResultType()) {
+                Fetch<TransactionEventEntity, TransactionEntity> transactionEntity = root.fetch("transaction", JoinType.INNER);
+                transactionEntity.fetch("customerTransactionResult", JoinType.LEFT);
+            }
+            return builder.isNotNull(root.get("transaction"));
+        };
+```
 
 
