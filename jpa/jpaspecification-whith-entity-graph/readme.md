@@ -36,11 +36,14 @@ Não utiliza specification, utiliza apenas `EntityGraph` através do `EntityMana
 
 Exemplo mais complexo, com auto relacionamento, ou relacionamentos que poderiam causar um Memory Overflow por ter referência ciclica entre as entidades.
 
-Utiliza EntityManager no repository `PostRepository` para implementar várias consultas, incluindo defindo os atributos que devem ser retornados em cada consulta. 
+Utiliza EntityManager no repository `PostRepository` para implementar várias consultas, incluindo defindo os atributos que devem ser retornados em cada consulta.
 
+Veja `PostTest`, neste teste vemos o grafo de objetos utilizando o que foi especificado na entidade Post através da annotation `@NamedEntityGraph`, mas tambem é especificado o grafo no direto no EntityManager (ver `PostReposory.findWithEntityGraph2`)
 
 ### 07-specification-entity-graph
-Em desenvolvimento...
+Utilizando `SimpleJpaRepository` para implementar `PostJpaSpecificationRepository` e permitir JPASpecification com EntityGraph de forma dinâmica, permitindo passar o grafo de objetos como parâmetro, nesta abordagem foi utilizado  a anotation `@NamedEntityGraph`para  especificar o grafo de objetos que queremos retornar.
+
+Veja `PostTest`
 
 
 ### References:

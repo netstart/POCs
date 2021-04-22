@@ -29,7 +29,9 @@ public class JpaSpecificationEntityGraphRepositoryImpl<T, ID extends Serializabl
 
   @Override
   public List<T> findAll(Specification<T> spec, EntityGraph.EntityGraphType entityGraphType, String entityGraphName) {
-    TypedQuery<T> query = getQuery(spec, (Sort) null);
+//    TypedQuery<T> query = getQuery(spec, (Sort) null);
+    
+    TypedQuery<T> query = getQuery(spec, Sort.unsorted());
     query.setHint(entityGraphType.getKey(), em.getEntityGraph(entityGraphName));
     return query.getResultList();
   }
@@ -56,7 +58,8 @@ public class JpaSpecificationEntityGraphRepositoryImpl<T, ID extends Serializabl
 
   @Override
   public T findOne(Specification<T> spec, EntityGraph.EntityGraphType entityGraphType, String entityGraphName) {
-    TypedQuery<T> query = getQuery(spec, (Sort) null);
+//    TypedQuery<T> query = getQuery(spec, (Sort) null);
+    TypedQuery<T> query = getQuery(spec, Sort.unsorted());
     query.setHint(entityGraphType.getKey(), em.getEntityGraph(entityGraphName));
     return query.getSingleResult();
   }

@@ -5,8 +5,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.data.jpa.repository.EntityGraph.EntityGraphType;
 import org.springframework.data.repository.NoRepositoryBean;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 
 @NoRepositoryBean
@@ -16,10 +14,10 @@ public class PostJpaSpecificationRepository extends JpaSpecificationEntityGraphR
     super(domainClass, em);
   }
 
-  public List<Post> findSubjectSpecification(String subject, String entityGraphName) {
-    Specification<Post> spec = (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("subject"), subject);
+  public Post findByIdSpecification(Long id, String entityGraphName) {
+    Specification<Post> spec = (root, query, criteriaBuilder) -> criteriaBuilder.equal(root.get("id"), id);
 
-    return findAll(spec, EntityGraphType.FETCH, entityGraphName);
+    return findOne(spec, EntityGraphType.FETCH, entityGraphName);
   }
 
 }
