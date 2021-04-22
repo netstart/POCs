@@ -5,6 +5,6 @@
   "dependencies": {
     "debug": "^2.2.0",
     "express": "4.x",
-    "mongoose": "^4.3.0"
+    "mongoose": "^5.9.2"
   }
 }
