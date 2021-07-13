@@ -12,7 +12,7 @@
 
 	<properties>
 		<version.wildfly.maven.plugin>1.2.2.Final</version.wildfly.maven.plugin>
-		<version.keycloak>9.0.3</version.keycloak>
+		<version.keycloak>14.0.0</version.keycloak>
 		<!-- https://repository.jboss.org/nexus/content/groups/public/org/wildfly/bom/wildfly-javaee8/ -->
 		<!-- <version.wildfly>17.0.1.Final</version.wildfly> -->
 		<version.wildfly>14.0.1.Final</version.wildfly>
