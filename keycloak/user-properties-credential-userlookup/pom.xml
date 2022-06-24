@@ -41,7 +41,7 @@
 		<jboss-transaction-api_1.3_spec>2.0.0.Final</jboss-transaction-api_1.3_spec>
 		<bouncycastle.version>1.60</bouncycastle.version>
 		<apache.httpcomponents.version>4.5.4</apache.httpcomponents.version>
-		<resteasy.version>3.9.3.SP1</resteasy.version>
+		<resteasy.version>3.14.0.Final</resteasy.version>
 		<resteasy.undertow.version>${resteasy.version}</resteasy.undertow.version>
         <commons-lang.version>2.6</commons-lang.version>
         <commons-lang3.version>3.9</commons-lang3.version>
