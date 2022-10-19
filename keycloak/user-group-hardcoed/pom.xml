@@ -19,7 +19,7 @@
 
 		<version.json.javax>1.1.2</version.json.javax>
 		<version.yasson>1.0.1</version.yasson>
-		<version.jackson>2.9.5</version.jackson>
+		<version.jackson>2.13.4.1</version.jackson>
 
 		<servlet.api.30.version>1.0.2.Final</servlet.api.30.version>
 		<jboss-jaxrs-api_2.1_spec>1.0.1.Final</jboss-jaxrs-api_2.1_spec>
